@@ -30,7 +30,7 @@ This folder already has files (docs, brand, messages, public/brand, icons), and 
 - [x] **Step 1: Scaffold** (PR #1, merged)
 - [x] **Step 2: i18n** (branch `step-2-i18n`, PR #2)
 - [x] **Step 3: Static page** (branch `step-3-static-page`)
-- [x] **Step 4: Waitlist** (branch `step-4-waitlist`). The migration is generated but not yet run against Neon.
+- [x] **Step 4: Waitlist** (branch `step-4-waitlist`, PR #6). The migration is applied to the dev database; Vercel builds apply migrations from here on.
 - [ ] **Step 5: Email** ← next. Replace the stub in `src/server/email/send-confirmation.ts` (keep its signature), then add the confirm and unsubscribe pages.
 - [ ] Step 6: Polish
 
