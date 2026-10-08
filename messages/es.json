@@ -202,7 +202,10 @@
   },
   "privacy": {
     "title": "Política de privacidad",
-    "draftNotice": "[BORRADOR — Luis debe revisarlo antes del lanzamiento]"
+    "draftNotice": "[BORRADOR — Luis debe revisarlo antes del lanzamiento]",
+    "reviewMarker": "[Luis debe revisarlo]",
+    "turnstileHeading": "Protección contra el spam",
+    "turnstileBody": "Para proteger el formulario de la lista de espera contra el spam y el abuso, este sitio usa Cloudflare Turnstile. La información que recopila Turnstile se trata según lo descrito en el <link>Anexo de privacidad de Turnstile de Cloudflare</link> (en inglés)."
   },
   "switcher": {
     "switchTo": "View in English"

@@ -26,7 +26,7 @@ Use the current stable versions at scaffold time, and check each library's curre
 | Styling | **Tailwind CSS v4** | `@import "../brand/theme.css"` in `globals.css`. No CSS-in-JS. |
 | i18n | **next-intl** | Locale-prefixed routing, `en` (default) and `es`. See §6. |
 | Validation | **zod** | Shared schema for the form and the server action. |
-| Database | **Postgres on Neon** via the Vercel Marketplace, using **Drizzle ORM** + `@neondatabase/serverless` | One table (§5.3). Migrations with drizzle-kit. |
+| Database | **Postgres on Neon** via the Vercel Marketplace, using **Drizzle ORM** + `@neondatabase/serverless` | One table (§5.3). Migrations generated with drizzle-kit and applied at build time (§5.5). |
 | Email | **Resend** (domain already verified on Luis's DNS) + **React Email** templates | Transactional double opt-in now; the same contacts can be synced to Resend for the launch broadcast later. |
 | Bot protection | **Cloudflare Turnstile** (managed / invisible mode) + a honeypot field | Verified server-side in the action. |
 | Rate limiting | **Upstash Redis + `@upstash/ratelimit`** via the Vercel Marketplace | 5 submissions per IP per 10 min. |
@@ -182,6 +182,16 @@ waitlist_signups (
 - `/[locale]/unsubscribe?token=…` → set `unsubscribed` and show `unsubscribe.*`.
 - Pages that use tokens must be `noindex`.
 
+### 5.5 Database migrations
+- **Generate** with `npm run db:generate` (drizzle-kit). Commit the SQL and `drizzle/meta/` together.
+- **Applied at build time on Vercel.** The `vercel-build` script runs `scripts/migrate.mts` (Drizzle's programmatic migrator over the Neon WebSocket driver) before `next build`. It runs only when `VERCEL_ENV` is `production` or `preview`, uses `DATABASE_URL_UNPOOLED` (falling back to `DATABASE_URL`), and logs which migrations ran. A failed migration fails the build, so the deploy doesn't go out.
+- **Locally**, run `npm run db:migrate` (drizzle-kit) against the Neon dev branch.
+- **Never run `drizzle-kit push` against a shared database.** It bypasses the migration history.
+- **Every migration must be backward-compatible with the code that's currently deployed.** Migrations run before the new code is live, and the old deployment keeps serving traffic until it's replaced (a rollback also puts old code on the new schema). Use **expand → deploy → contract**:
+  1. *Expand:* add new tables or nullable/defaulted columns; don't rename or drop anything the live code uses.
+  2. *Deploy* the code that uses the new shape (and, if needed, backfills).
+  3. *Contract:* in a later deploy, once no running code depends on it, drop or rename the old columns.
+
 ## 6. Internationalization
 
 ### 6.1 Routing
@@ -222,7 +232,7 @@ Load the fonts as ArrayBuffers for `ImageResponse`. Set `alt` from `meta.ogAlt`.
 - Decorative SVGs get `aria-hidden="true"`. Each illustration card gets `role="img"` plus a translated `aria-label`.
 
 ## 9. Open items for Luis (don't invent these)
-- [ ] **Privacy policy text.** Build `/[locale]/privacy` with a clearly marked DRAFT notice (`privacy.draftNotice`) and a short list of facts only: what is collected (email, language, signup source), why (launch updates), the provider list (Vercel, Neon, Resend, Cloudflare), how to unsubscribe, the contact email, and that reports and data are never used to train AI models. Luis reviews and finalizes it.
+- [ ] **Privacy policy text.** Build `/[locale]/privacy` with a clearly marked DRAFT notice (`privacy.draftNotice`) and a short list of facts only: what is collected (email, language, signup source), why (launch updates), the provider list (Vercel, Neon, Resend, Cloudflare), how to unsubscribe, the contact email, and that reports and data are never used to train AI models. It must also **reference Cloudflare's [Turnstile Privacy Addendum](https://www.cloudflare.com/turnstile-privacy-policy/)**, a condition of running Turnstile in Invisible mode (the addendum is English-only, so the Spanish page notes that). Luis reviews and finalizes it.
 - [ ] `CONTACT_EMAIL` and `EMAIL_FROM` addresses.
 - [ ] An outlined wordmark SVG (§3.4).
 - [ ] Replace the illustration cards with real screenshots once the staff app is restyled (optional).
@@ -230,14 +240,15 @@ Load the fonts as ArrayBuffers for `ImageResponse`. Set `alt` from `meta.ogAlt`.
 ## 10. Environment variables
 ```
 NEXT_PUBLIC_SITE_URL=https://ekklesiaio.com
-DATABASE_URL=                      # Neon (Vercel Marketplace sets it)
+DATABASE_URL=                      # Neon, pooled (Vercel Marketplace sets it)
+DATABASE_URL_UNPOOLED=             # Neon, direct; used by build-time migrations (§5.5)
 RESEND_API_KEY=
 EMAIL_FROM="ekklesiaio <hello@ekklesiaio.com>"
 CONTACT_EMAIL=hello@ekklesiaio.com
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
-UPSTASH_REDIS_REST_URL=
-UPSTASH_REDIS_REST_TOKEN=
+KV_REST_API_URL=                   # Upstash Redis (Vercel Marketplace sets it)
+KV_REST_API_TOKEN=
 ```
 Commit a `.env.example`. Never commit real values.
 

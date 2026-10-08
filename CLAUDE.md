@@ -30,8 +30,9 @@ This folder already has files (docs, brand, messages, public/brand, icons), and 
 - [x] **Step 1: Scaffold** (PR #1, merged)
 - [x] **Step 2: i18n** (branch `step-2-i18n`, PR #2)
 - [x] **Step 3: Static page** (branch `step-3-static-page`)
-- [ ] **Step 4: Waitlist** ← next. Turn `src/components/waitlist-form.tsx` (currently an idle visual shell with no `name` on the input) into the client form with the server action and states.
-- [ ] Step 5: Email · [ ] Step 6: Polish
+- [x] **Step 4: Waitlist** (branch `step-4-waitlist`, PR #6). The migration is applied to the dev database; Vercel builds apply migrations from here on.
+- [ ] **Step 5: Email** ← next. Replace the stub in `src/server/email/send-confirmation.ts` (keep its signature), then add the confirm and unsubscribe pages.
+- [ ] Step 6: Polish
 
 ## Decisions and gotchas so far
 - **Next 16.4:** the middleware file is `src/proxy.ts` (renamed from `middleware.ts` in Next 16; DESIGN.md §2 predates this). `cacheComponents` and `partialPrefetching` are on (create-next-app defaults).
@@ -46,6 +47,12 @@ This folder already has files (docs, brand, messages, public/brand, icons), and 
 - **Sticky header offset:** `scroll-padding-top` in `globals.css` steps with the header's wrap points (3 rows < 768px, 2 rows < 860px). Recheck if nav copy changes. Write it as plain `@media` CSS: Prettier reorders `@apply` variants, and Tailwind then emits `min-[860px]` before `md`, which breaks the cascade.
 - **Build-time env:** `/en` and `/es` are prerendered, so the footer reads `CONTACT_EMAIL` at build time. Without it, the Contact link is omitted.
 - **Year:** `new Date()` breaks prerendering under `cacheComponents`. The footer reads it in a `"use cache"` helper with `cacheLife("days")`.
+- **Waitlist layout:** the zod schema lives in `src/lib/waitlist-schema.ts` (it's imported by the client form too) and uses `zod/mini` to keep the bundle small. The signup rules are in `src/server/waitlist.ts`. All SQL is in `src/server/waitlist-repo.ts`, so tests mock the repo, not Drizzle. `waitlist-form.tsx` is a server wrapper that passes only `form` messages to `waitlist-form-client.tsx`.
+- **Waitlist behavior:** the resend throttle and the unsubscribed → pending move are conditional `UPDATE`s, so concurrent submits can't both send. If a send fails, `confirm_sent_at` is restored so a retry isn't throttled. The action re-sends the typed email in its state, because React resets the form after the action runs.
+- **Turnstile:** it's explicitly rendered with `appearance: "interaction-only"` and reset after every result that isn't success (tokens are single-use, 5 min). Without JS, the form posts but has no token, so it gets the error state. The widget is in Invisible mode. Production uses real keys; Preview and local use Cloudflare's always-pass test keys (see `.env.example`). The token is verified server-side with siteverify. When `VERCEL_ENV === "production"`, the returned `hostname` must also equal `getSiteUrl().hostname`; test keys always report `example.com`, so the check is skipped elsewhere. A missing secret fails closed.
+- **Rate limit:** Upstash env vars are `KV_REST_API_URL` / `KV_REST_API_TOKEN` (the Vercel integration's names), passed to `new Redis({ url, token })` explicitly. Upstash's docs only document `UPSTASH_REDIS_REST_*` for `Redis.fromEnv()`. If they're missing, the rate limit is skipped outside production and fails closed in production. Not used locally.
+- **Privacy page:** `/[locale]/privacy` is a draft shell (`noindex`) holding only the Turnstile disclosure, marked `privacy.reviewMarker`. Cloudflare requires a reference to its Turnstile Privacy Addendum for Invisible mode (DESIGN.md §9). The rest of the §9 facts list is still open.
+- **Header links:** they point at `/{locale}#section`, not a bare `#section`, so they work from other pages too. On the home page they're still same-document jumps.
 - **Open questions for Luis:** the unused `switcher.switchTo` key; a translated 404 page, which needs copy that doesn't exist yet; the Spanish text for `nav.primaryLabel` / `footer.navLabel` (currently `[ES TODO]`).
 
 ## Commands
@@ -56,4 +63,7 @@ npm, Node 24.
 - `npm run typecheck`: `next typegen && tsc --noEmit`. If it reports errors in `.next/dev/types` after routes move, delete `.next` and rerun.
 - `npm run check:messages`: fails if `messages/en.json` and `messages/es.json` keys differ
 - `npm run format` / `npm run format:check`: Prettier with Tailwind class sorting. `brand/`, `docs/`, `CLAUDE.md` and `AGENTS.md` are excluded and keep their authored formatting.
-- (to add in later steps: test, e2e, db:generate, db:migrate)
+- `npm test`: Vitest unit tests (`src/**/*.test.ts`). `server-only` is aliased to an empty module in `vitest.config.mts`.
+- `npm run db:generate` / `npm run db:migrate`: drizzle-kit, for local dev against the Neon dev branch. Migrations live in `drizzle/`, and the config loads `.env.local` for `DATABASE_URL`. Never `drizzle-kit push` against a shared database.
+- `vercel-build` (Vercel runs it instead of `build`): `node scripts/migrate.mts && next build`. The script applies migrations only when `VERCEL_ENV` is production or preview, over `DATABASE_URL_UNPOOLED` (falling back to `DATABASE_URL`). Migrations must be backward-compatible with the deployed code (expand → deploy → contract; DESIGN.md §5.5).
+- (to add in later steps: e2e)
