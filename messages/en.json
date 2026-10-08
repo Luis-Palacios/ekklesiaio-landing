@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "how": "How it works",
+    "features": "Features",
+    "ai": "AI insights",
+    "cta": "Join the waitlist",
+    "langLabel": "Language"
+  },
+  "hero": {
+    "badge": "Coming soon",
+    "tagline": "Small-group reporting for churches",
+    "titleA": "See what’s happening ",
+    "titleEm": "beyond Sunday.",
+    "p1": "Your small groups are where much of your church’s ministry happens—but keeping track of dozens of groups shouldn’t require chasing down messages, spreadsheets, and reports.",
+    "p2": "ekklesiaio makes small-group reporting simple for leaders and actionable for church leadership.",
+    "howLink": "See how it works",
+    "noSpam": "No spam. One email when we launch."
+  },
+  "form": {
+    "heroLabel": "Be the first to know when we launch",
+    "ctaLabel": "Get notified when ekklesiaio launches",
+    "placeholder": "you@yourchurch.org",
+    "heroButton": "Join the waitlist",
+    "ctaButton": "Notify me",
+    "loading": "Joining…",
+    "ctaLoading": "Sending…",
+    "invalid": "Enter a valid email address, like you@yourchurch.org.",
+    "successTitle": "You’re on the list.",
+    "successBody": "Check your inbox to confirm your email—we’ll let you know as soon as ekklesiaio is ready.",
+    "serverError": "Something went wrong on our end. Please try again in a moment.",
+    "retry": "Try again",
+    "honeypotLabel": "Leave this field empty"
+  },
+  "groups": {
+    "g1": "Tuesday Young Adults",
+    "g2": "Riverside Families",
+    "g3": "Men’s Thursday Study"
+  },
+  "mock": {
+    "aria": "Illustration of the ekklesiaio reports view",
+    "title": "Group reports",
+    "week": "This week",
+    "progress": "18 of 24 groups have reported",
+    "leader": "Leader:",
+    "prayerCount": "1 prayer request",
+    "submitted": "Submitted",
+    "reminder": "Reminder sent",
+    "needs": "Needs attention",
+    "needsItem": "Prayer request · Riverside Families",
+    "assign": "Assign follow-up"
+  },
+  "problem": {
+    "eyebrow": "The problem",
+    "title": "You have the groups. But do you know what’s happening in them?",
+    "intro": "You may have 20, 50, or 100 small groups meeting throughout your church.",
+    "aLabel": "In your groups",
+    "aItems": [
+      "Leaders are having conversations.",
+      "People are asking for prayer.",
+      "Needs are coming up.",
+      "Disciples are growing."
+    ],
+    "bLabel": "What reaches leadership",
+    "bLead": "But getting that information back to church leadership can be difficult.",
+    "bItems": [
+      "Reports don’t get submitted.",
+      "Leaders forget.",
+      "Pastors have to chase people down.",
+      "Information gets buried in messages and spreadsheets.",
+      "And even when reports arrive, reviewing them all takes time."
+    ],
+    "closing": "ekklesiaio brings the process together."
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "title": "Simple for leaders. Powerful for church leadership.",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Leaders report",
+        "body": "Small-group leaders receive reminders and submit their reports through a simple workflow."
+      },
+      {
+        "n": "02",
+        "title": "Leadership reviews",
+        "body": "Pastors, elders, and administrators get a centralized view of what’s happening across their groups."
+      },
+      {
+        "n": "03",
+        "title": "Needs become visible",
+        "body": "Prayer requests, concerns, follow-ups, and other important information are easier to identify."
+      },
+      {
+        "n": "04",
+        "title": "Follow up",
+        "body": "Keep track of what needs attention so important conversations don’t get lost."
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Features",
+    "title": "Core features",
+    "f1t": "Small Group Management",
+    "f1b": "Manage your groups and members from one place. Add, remove, and organize groups as your church changes.",
+    "f2t": "Simple Reporting",
+    "f2b": "Make it easy for small-group leaders to submit their reports without adding another administrative burden.",
+    "f3t": "Automated Reminders",
+    "f3b": "Help leaders remember to submit their reports without pastors having to chase them down.",
+    "f4t": "Notifications",
+    "f4b": "Keep the right people informed when reports, requests, or other important updates need attention.",
+    "f5t": "Follow-Up",
+    "f5b": "Turn information from your groups into actionable follow-ups so needs don’t get lost.",
+    "f6t": "Church Visibility",
+    "f6b": "See what’s happening across your small groups and get a clearer picture of the life of your church."
+  },
+  "ai": {
+    "eyebrow": "AI-assisted insights",
+    "titleA": "Every report heard, ",
+    "titleEm": "even when there are dozens.",
+    "intro": "ekklesiaio uses AI to help pastors and administrators make sense of every small-group report—so the people behind them get the attention they need.",
+    "i1t": "Report summaries",
+    "i1b": "Get the key points of each report—and of the whole week across your groups—in a few sentences.",
+    "i2t": "Tone at a glance",
+    "i2b": "See whether a group’s reports sound encouraged, steady, or in need of care—and notice when that changes.",
+    "i3t": "“Pay attention to…”",
+    "i3b": "Surface the reports, requests, and changes that may need a pastor’s attention, so nothing important gets buried.",
+    "i4t": "Prayer request suggestions",
+    "i4b": "Turn what leaders share into suggested prayer requests, ready for your team to review, edit, and share.",
+    "trustAria": "How ekklesiaio uses AI",
+    "t1s": "Always optional.",
+    "t1b": "Use the AI suggestions you find helpful and ignore the rest—or turn them off entirely. ekklesiaio works just as well without them.",
+    "t2s": "Your leaders decide.",
+    "t2b": "AI only suggests. Nothing is shared or acted on until a person has reviewed it.",
+    "t3s": "Your data stays private.",
+    "t3b": "Your church’s reports are never used to train AI models."
+  },
+  "card": {
+    "aria": "Illustration of ekklesiaio’s weekly AI insights",
+    "title": "Weekly insights",
+    "from": "From 18 reports",
+    "summaryLabel": "Summary",
+    "summary": "Most groups met as planned. Two groups mentioned members facing job loss, and attendance at Riverside Families has dipped for three weeks.",
+    "toneLabel": "Tone by group",
+    "toneGood": "Encouraged",
+    "toneSteady": "Steady",
+    "toneCare": "Needs care",
+    "attentionLabel": "Pay attention to",
+    "attention": "Riverside Families: attendance down three weeks in a row.",
+    "prayerLabel": "Suggested prayer request",
+    "prayer": "“Pray for the families in our church facing job loss—for provision, peace, and community around them.”",
+    "caption": "Optional AI suggestion · review before sharing",
+    "edit": "Edit",
+    "approve": "Approve"
+  },
+  "philosophy": {
+    "eyebrow": "Our philosophy",
+    "titleA": "Technology should support ministry, ",
+    "titleEm": "not replace it.",
+    "p1": "ekklesiaio is built to reduce the administrative work around small-group ministry—not add more of it.",
+    "p2": "When leaders spend less time chasing reports, they can spend more time caring for people, building community, and making disciples.",
+    "missionLabel": "Mission",
+    "mission": "To help churches care for people and make disciples by giving leaders better visibility into the life of their church.",
+    "visionLabel": "Vision",
+    "vision": "A future where every church can easily understand, support, and care for the people in its community."
+  },
+  "cta": {
+    "titleA": "Know your groups. Care for your people. ",
+    "titleEm": "Make disciples.",
+    "body": "Bring your small-group reporting, notifications, and follow-up into one simple platform."
+  },
+  "footer": {
+    "privacy": "Privacy policy",
+    "contact": "Contact"
+  },
+  "meta": {
+    "title": "ekklesiaio — Small-group reporting for churches",
+    "description": "See what’s happening beyond Sunday. ekklesiaio makes small-group reporting simple for leaders and actionable for church leadership. Join the waitlist.",
+    "ogAlt": "ekklesiaio — See what’s happening beyond Sunday."
+  },
+  "confirm": {
+    "title": "You’re confirmed.",
+    "body": "Thank you! We’ll email you as soon as ekklesiaio is ready.",
+    "invalidTitle": "This link has expired or isn’t valid.",
+    "invalidBody": "Join the waitlist again and we’ll send you a new confirmation email.",
+    "back": "Back to ekklesiaio"
+  },
+  "unsubscribe": {
+    "title": "You’ve been removed from the list.",
+    "body": "You won’t receive any more emails from us about ekklesiaio.",
+    "back": "Back to ekklesiaio"
+  },
+  "email": {
+    "subject": "Confirm your spot on the ekklesiaio waitlist",
+    "preview": "One click to confirm your email.",
+    "heading": "Confirm your email",
+    "body": "Thanks for your interest in ekklesiaio. Please confirm your email address so we can let you know when we launch.",
+    "button": "Confirm my email",
+    "ignore": "If you didn’t sign up, you can safely ignore this email.",
+    "unsubscribe": "Unsubscribe"
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "draftNotice": "[DRAFT — Luis to review before launch]"
+  },
+  "switcher": {
+    "switchTo": "Ver en español"
+  },
+  "og": {
+    "subline": "Small-group reporting, simple for leaders and actionable for church leadership."
+  }
+}

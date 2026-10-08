@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 120" role="img" aria-labelledby="title desc">
+<title id="title">ekklesiaio logo</title>
+<desc id="desc">Modern Christian SaaS logo representing a church, cross, and discipleship community.</desc>
+<g transform="translate(10 10) scale(1.25)">
+
+<g>
+  <!-- church roof / open arms -->
+  <path d="M22 42V27c0-4 2-7 5-9l13-9 13 9c3 2 5 5 5 9v15"
+        fill="none" stroke="#0B2341" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- cross -->
+  <path d="M40 7v16M34 15h12" fill="none" stroke="#F2B544" stroke-width="5.5" stroke-linecap="round"/>
+  <!-- people -->
+  <circle cx="40" cy="30" r="4.2" fill="#0B2341"/>
+  <circle cx="29" cy="32" r="3.2" fill="#0B2341"/>
+  <circle cx="51" cy="32" r="3.2" fill="#0B2341"/>
+  <path d="M32 48c0-7 3.3-11 8-11s8 4 8 11"
+        fill="#0B2341"/>
+  <path d="M23 47c0-5 2.3-8 6-8 2.2 0 3.8 1.1 4.8 3.1"
+        fill="none" stroke="#0B2341" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M57 47c0-5-2.3-8-6-8-2.2 0-3.8 1.1-4.8 3.1"
+        fill="none" stroke="#0B2341" stroke-width="4.5" stroke-linecap="round"/>
+</g>
+
+</g>
+<text x="105" y="77" font-family="Inter, Arial, Helvetica, sans-serif" font-size="54" font-weight="650" letter-spacing="-2">
+<tspan fill="#0B2341">ekklesia</tspan><tspan fill="#F2B544">io</tspan>
+</text>
+</svg>

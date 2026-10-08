@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ekklesiaio — Landing page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Inter:wght@600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div lang="{{lang}}" style="font-family: 'Figtree', ui-sans-serif, system-ui, sans-serif; color: #33445A; background: #FBFAF7; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased">
+
+<header style="position: sticky; top: 0; z-index: 10; background: rgba(251, 250, 247, 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid #E2E5EA">
+<div style="max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="#top" aria-label="ekklesiaio" style="display: flex; align-items: center">
+<svg viewBox="30 12 370 70" width="180" height="34" role="img" aria-label="ekklesiaio">
+<g transform="translate(10 10) scale(1.25)">
+<path d="M22 42V27c0-4 2-7 5-9l13-9 13 9c3 2 5 5 5 9v15" fill="none" stroke="#0B2341" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M40 7v16M34 15h12" fill="none" stroke="#F2B544" stroke-width="5.5" stroke-linecap="round"></path>
+<circle cx="40" cy="30" r="4.2" fill="#0B2341"></circle>
+<circle cx="29" cy="32" r="3.2" fill="#0B2341"></circle>
+<circle cx="51" cy="32" r="3.2" fill="#0B2341"></circle>
+<path d="M32 48c0-7 3.3-11 8-11s8 4 8 11" fill="#0B2341"></path>
+<path d="M23 47c0-5 2.3-8 6-8 2.2 0 3.8 1.1 4.8 3.1" fill="none" stroke="#0B2341" stroke-width="4.5" stroke-linecap="round"></path>
+<path d="M57 47c0-5-2.3-8-6-8-2.2 0-3.8 1.1-4.8 3.1" fill="none" stroke="#0B2341" stroke-width="4.5" stroke-linecap="round"></path>
+</g>
+<text x="105" y="77" font-family="Inter, Arial, Helvetica, sans-serif" font-size="54" font-weight="650" letter-spacing="-2"><tspan fill="#0B2341">ekklesia</tspan><tspan fill="#F2B544">io</tspan></text>
+</svg>
+</a>
+<nav aria-label="Primary" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px">
+<a href="#how-it-works" style="color: #33445A; text-decoration: none; font-weight: 500; font-size: 15px">{{t.nav.how}}</a>
+<a href="#features" style="color: #33445A; text-decoration: none; font-weight: 500; font-size: 15px">{{t.nav.features}}</a>
+<a href="#ai-insights" style="color: #33445A; text-decoration: none; font-weight: 500; font-size: 15px">{{t.nav.ai}}</a>
+<div role="group" aria-label="{{t.nav.langLabel}}" style="display: flex; align-items: center; gap: 2px; padding: 3px 3px 3px 10px; border: 1px solid #D5DBE3; border-radius: 10px; background: #FFFFFF">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56667A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 4px"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+<button type="button" lang="en" aria-label="English" aria-pressed="{{isEn}}" onClick="{{setEn}}" style="min-width: 44px; height: 38px; padding: 0 10px; border: none; border-radius: 7px; background: {{enBg}}; color: {{enColor}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">EN</button>
+<button type="button" lang="es" aria-label="Español" aria-pressed="{{isEs}}" onClick="{{setEs}}" style="min-width: 44px; height: 38px; padding: 0 10px; border: none; border-radius: 7px; background: {{esBg}}; color: {{esColor}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">ES</button>
+</div>
+<a href="#waitlist" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 10px; background: #0B2341; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px">{{t.nav.cta}}</a>
+</nav>
+</div>
+</header>
+
+<main id="top">
+
+<section aria-labelledby="hero-title" style="padding: clamp(56px, 8vw, 104px) 24px clamp(64px, 9vw, 120px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: clamp(40px, 6vw, 72px)">
+
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: #FDF1D8; color: #7A5100; font-size: 14px; font-weight: 600">
+<span style="width: 8px; height: 8px; border-radius: 999px; background: #F2B544"></span>
+<span>{{t.hero.badge}}</span>
+</span>
+<span style="font-size: 14px; color: #56667A; font-weight: 500">{{t.hero.tagline}}</span>
+</div>
+<h1 id="hero-title" style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(44px, 6.2vw, 80px); line-height: 1.02; letter-spacing: -0.02em; color: #0B2341; text-wrap: balance">{{t.hero.titleA}}<em style="font-style: italic; font-weight: 400; color: #0B2341; text-decoration: underline; text-decoration-color: #F2B544; text-decoration-thickness: 0.08em; text-underline-offset: 0.12em">{{t.hero.titleEm}}</em></h1>
+<p style="margin: 0; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.6; color: #33445A; max-width: 560px; text-wrap: pretty">{{t.hero.p1}}</p>
+<p style="margin: 0; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.5; color: #0B2341; font-weight: 600; max-width: 560px; text-wrap: pretty">{{t.hero.p2}}</p>
+
+<div id="waitlist" style="display: flex; flex-direction: column; gap: 12px; padding-top: 8px; max-width: 560px">
+<sc-if value="{{hero.showForm}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{hero.onSubmit}}" style="display: flex; flex-direction: column; gap: 8px">
+<label for="hero-email" style="font-size: 14px; font-weight: 600; color: #0B2341">{{t.form.heroLabel}}</label>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<input id="hero-email" type="email" name="email" autocomplete="email" placeholder="{{t.form.placeholder}}" value="{{hero.email}}" onChange="{{hero.onEmail}}" aria-invalid="{{hero.isError}}" aria-describedby="hero-msg" style="flex: 1 1 240px; min-width: 0; height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 10px; border: 1.5px solid {{hero.borderColor}}; background: #FFFFFF; font: inherit; font-size: 16px; color: #0B2341">
+<button type="submit" disabled="{{hero.loading}}" style="flex: 0 0 auto; height: 52px; padding: 0 22px; border: none; border-radius: 10px; background: #F2B544; color: #0B2341; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer">{{hero.heroButton}}</button>
+</div>
+<div id="hero-msg" role="status" style="min-height: 22px; font-size: 14px; color: {{hero.msgColor}}">{{hero.msg}}</div>
+</form>
+</sc-if>
+<sc-if value="{{hero.isSuccess}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; border-radius: 12px; background: #FFFFFF; border: 1.5px solid #0B2341">
+<span style="flex: 0 0 auto; width: 32px; height: 32px; border-radius: 999px; background: #0B2341; display: flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2B544" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+</span>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<strong style="color: #0B2341; font-size: 17px">{{t.form.successTitle}}</strong>
+<span style="font-size: 15px; color: #33445A">{{t.form.successBody}}</span>
+</div>
+</div>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<a href="#how-it-works" style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: #0B2341; font-weight: 600; text-decoration: none; font-size: 15px">{{t.hero.howLink}}
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</a>
+<span style="font-size: 14px; color: #56667A">{{t.hero.noSpam}}</span>
+</div>
+</div>
+</div>
+
+<div style="flex: 1 1 400px; min-width: 0; display: flex; justify-content: center">
+<div aria-label="{{t.mock.aria}}" role="img" style="width: 100%; max-width: 480px; background: #FFFFFF; border: 1px solid #E2E5EA; border-radius: 18px; box-shadow: 0 1px 2px rgba(11, 35, 65, 0.06), 0 24px 48px -16px rgba(11, 35, 65, 0.22); overflow: hidden">
+<div style="padding: 20px 22px 16px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #EEF0F3">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<strong style="color: #0B2341; font-size: 16px">{{t.mock.title}}</strong>
+<span style="font-size: 13px; color: #56667A">{{t.mock.week}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="height: 8px; border-radius: 999px; background: #EEF0F3; overflow: hidden"><div style="width: 75%; height: 100%; background: #0B2341; border-radius: 999px"></div></div>
+<span style="font-size: 13px; color: #56667A">{{t.mock.progress}}</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 22px; border-bottom: 1px solid #EEF0F3">
+<div style="display: flex; flex-direction: column; min-width: 0">
+<span style="font-weight: 600; color: #0B2341; font-size: 15px">{{t.groups.g1}}</span>
+<span style="font-size: 13px; color: #56667A">{{t.mock.leader}} Daniel R.</span>
+</div>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #EAF0F7; color: #0B2341; font-size: 13px; font-weight: 600; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>{{t.mock.submitted}}</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 22px; border-bottom: 1px solid #EEF0F3">
+<div style="display: flex; flex-direction: column; min-width: 0">
+<span style="font-weight: 600; color: #0B2341; font-size: 15px">{{t.groups.g2}}</span>
+<span style="font-size: 13px; color: #56667A">{{t.mock.leader}} Ana M. · {{t.mock.prayerCount}}</span>
+</div>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #EAF0F7; color: #0B2341; font-size: 13px; font-weight: 600; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>{{t.mock.submitted}}</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 22px">
+<div style="display: flex; flex-direction: column; min-width: 0">
+<span style="font-weight: 600; color: #0B2341; font-size: 15px">{{t.groups.g3}}</span>
+<span style="font-size: 13px; color: #56667A">{{t.mock.leader}} Carlos P.</span>
+</div>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #FDF1D8; color: #7A5100; font-size: 13px; font-weight: 600; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>{{t.mock.reminder}}</span>
+</div>
+</div>
+<div style="margin: 0 16px 16px; padding: 16px; border-radius: 12px; background: #FBF6EA; border: 1px solid #F3E2B8; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7A5100">{{t.mock.needs}}</span>
+<span style="font-size: 15px; font-weight: 600; color: #0B2341">{{t.mock.needsItem}}</span>
+</div>
+<span style="display: inline-flex; align-items: center; padding: 8px 12px; border-radius: 8px; background: #0B2341; color: #FFFFFF; font-size: 13px; font-weight: 600">{{t.mock.assign}}</span>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section aria-labelledby="problem-title" style="padding: clamp(64px, 9vw, 120px) 24px; background: #FFFFFF; border-top: 1px solid #E2E5EA; border-bottom: 1px solid #E2E5EA">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">{{t.problem.eyebrow}}</span>
+<h2 id="problem-title" style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -0.015em; color: #0B2341; text-wrap: balance">{{t.problem.title}}</h2>
+<p style="margin: 0; font-size: 19px; color: #33445A">{{t.problem.intro}}</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 24px">
+<div style="padding: clamp(28px, 3.5vw, 40px); border-radius: 18px; background: #FBFAF7; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 20px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #56667A">{{t.problem.aLabel}}</span>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px">
+<sc-for list="{{t.problem.aItems}}" as="item" hint-placeholder-count="4">
+<li style="display: flex; align-items: center; gap: 14px; font-family: 'Newsreader', Georgia, serif; font-size: 24px; line-height: 1.3; color: #0B2341"><span style="flex: 0 0 auto; width: 10px; height: 10px; border-radius: 999px; background: #F2B544"></span>{{item}}</li>
+</sc-for>
+</ul>
+</div>
+
+<div style="padding: clamp(28px, 3.5vw, 40px); border-radius: 18px; background: #F1F4F8; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 20px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #56667A">{{t.problem.bLabel}}</span>
+<p style="margin: 0; font-size: 18px; font-weight: 600; color: #0B2341">{{t.problem.bLead}}</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{t.problem.bItems}}" as="item" hint-placeholder-count="5">
+<li style="display: flex; align-items: baseline; gap: 12px; font-size: 17px; color: #33445A"><span style="flex: 0 0 auto; width: 14px; height: 2px; background: #8D9AAB; transform: translateY(-5px)"></span>{{item}}</li>
+</sc-for>
+</ul>
+</div>
+</div>
+
+<p style="margin: 0; display: flex; align-items: center; gap: 14px; font-family: 'Newsreader', Georgia, serif; font-size: clamp(26px, 2.8vw, 34px); color: #0B2341; font-weight: 500">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2B544" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 auto"><path d="M12 3v18"></path><path d="M6 9h12"></path></svg>
+<span>{{t.problem.closing}}</span>
+</p>
+</div>
+</section>
+
+<section id="how-it-works" aria-labelledby="how-title" style="padding: clamp(64px, 9vw, 120px) 24px; background: #0B2341; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #F2B544">{{t.how.eyebrow}}</span>
+<h2 id="how-title" style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -0.015em; color: #FFFFFF; text-wrap: balance">{{t.how.title}}</h2>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 32px">
+<sc-for list="{{t.how.steps}}" as="step" hint-placeholder-count="4">
+<li style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.18)">
+<span style="font-family: 'Newsreader', Georgia, serif; font-size: 44px; line-height: 1; color: #F2B544">{{step.n}}</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #FFFFFF">{{step.title}}</h3>
+<p style="margin: 0; font-size: 16px; color: #C3CDDA">{{step.body}}</p>
+</li>
+</sc-for>
+</ol>
+</div>
+</section>
+
+<section id="features" aria-labelledby="features-title" style="padding: clamp(64px, 9vw, 120px) 24px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">{{t.features.eyebrow}}</span>
+<h2 id="features-title" style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -0.015em; color: #0B2341">{{t.features.title}}</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px">
+
+<div style="padding: 28px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 12px; background: #EAF0F7; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #0B2341">{{t.features.f1t}}</h3>
+<p style="margin: 0; font-size: 16px; color: #33445A">{{t.features.f1b}}</p>
+</div>
+
+<div style="padding: 28px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 12px; background: #EAF0F7; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="m9 14 2 2 4-4"></path></svg></span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #0B2341">{{t.features.f2t}}</h3>
+<p style="margin: 0; font-size: 16px; color: #33445A">{{t.features.f2b}}</p>
+</div>
+
+<div style="padding: 28px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 12px; background: #EAF0F7; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3 2 6"></path><path d="m22 6-3-3"></path></svg></span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #0B2341">{{t.features.f3t}}</h3>
+<p style="margin: 0; font-size: 16px; color: #33445A">{{t.features.f3b}}</p>
+</div>
+
+<div style="padding: 28px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 12px; background: #EAF0F7; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #0B2341">{{t.features.f4t}}</h3>
+<p style="margin: 0; font-size: 16px; color: #33445A">{{t.features.f4b}}</p>
+</div>
+
+<div style="padding: 28px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 12px; background: #EAF0F7; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path><path d="M13 6h8"></path><path d="M13 12h8"></path><path d="M13 18h8"></path></svg></span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #0B2341">{{t.features.f5t}}</h3>
+<p style="margin: 0; font-size: 16px; color: #33445A">{{t.features.f5b}}</p>
+</div>
+
+<div style="padding: 28px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 12px; background: #EAF0F7; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #0B2341">{{t.features.f6t}}</h3>
+<p style="margin: 0; font-size: 16px; color: #33445A">{{t.features.f6b}}</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="ai-insights" aria-labelledby="ai-title" style="padding: clamp(64px, 9vw, 120px) 24px; background: #F1F4F8; border-top: 1px solid #E2E5EA">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: clamp(40px, 6vw, 72px)">
+
+<div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">{{t.ai.eyebrow}}</span>
+<h2 id="ai-title" style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -0.015em; color: #0B2341; text-wrap: balance">{{t.ai.titleA}}<em style="font-style: italic; font-weight: 400">{{t.ai.titleEm}}</em></h2>
+<p style="margin: 0; font-size: 19px; color: #33445A; text-wrap: pretty">{{t.ai.intro}}</p>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 24px">
+<li style="display: flex; flex-direction: column; gap: 8px">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path></svg></span>
+<h3 style="margin: 0; font-size: 17px; font-weight: 700; color: #0B2341">{{t.ai.i1t}}</h3>
+<p style="margin: 0; font-size: 15px; color: #33445A">{{t.ai.i1b}}</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 8px">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></span>
+<h3 style="margin: 0; font-size: 17px; font-weight: 700; color: #0B2341">{{t.ai.i2t}}</h3>
+<p style="margin: 0; font-size: 15px; color: #33445A">{{t.ai.i2b}}</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 8px">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"></path><path d="M4 4h13l-2 4 2 4H4"></path></svg></span>
+<h3 style="margin: 0; font-size: 17px; font-weight: 700; color: #0B2341">{{t.ai.i3t}}</h3>
+<p style="margin: 0; font-size: 15px; color: #33445A">{{t.ai.i3b}}</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 8px">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M12 13s-3-1.8-3-3.6A1.6 1.6 0 0 1 12 8.6a1.6 1.6 0 0 1 3 .8c0 1.8-3 3.6-3 3.6z"></path></svg></span>
+<h3 style="margin: 0; font-size: 17px; font-weight: 700; color: #0B2341">{{t.ai.i4t}}</h3>
+<p style="margin: 0; font-size: 15px; color: #33445A">{{t.ai.i4b}}</p>
+</li>
+</ul>
+<ul aria-label="{{t.ai.trustAria}}" style="margin: 0; padding: 20px 0 0; list-style: none; border-top: 1px solid #D5DBE3; display: flex; flex-direction: column; gap: 14px">
+<li style="display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: #33445A">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A5B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px"><rect x="2" y="7" width="20" height="10" rx="5"></rect><circle cx="16" cy="12" r="2.5"></circle></svg>
+<span><strong style="color: #0B2341">{{t.ai.t1s}}</strong> {{t.ai.t1b}}</span>
+</li>
+<li style="display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: #33445A">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A5B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="m16 11 2 2 4-4"></path></svg>
+<span><strong style="color: #0B2341">{{t.ai.t2s}}</strong> {{t.ai.t2b}}</span>
+</li>
+<li style="display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: #33445A">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A5B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+<span><strong style="color: #0B2341">{{t.ai.t3s}}</strong> {{t.ai.t3b}}</span>
+</li>
+</ul>
+</div>
+
+<div style="flex: 1 1 420px; min-width: 0; display: flex; justify-content: center">
+<div aria-label="{{t.card.aria}}" role="img" style="width: 100%; max-width: 500px; background: #FFFFFF; border: 1px solid #E2E5EA; border-radius: 18px; box-shadow: 0 1px 2px rgba(11, 35, 65, 0.06), 0 24px 48px -16px rgba(11, 35, 65, 0.22); overflow: hidden">
+<div style="padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #EEF0F3">
+<strong style="color: #0B2341; font-size: 16px">{{t.card.title}}</strong>
+<span style="font-size: 13px; color: #56667A">{{t.card.from}}</span>
+</div>
+<div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid #EEF0F3">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #56667A">{{t.card.summaryLabel}}</span>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #33445A">{{t.card.summary}}</p>
+</div>
+<div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #EEF0F3">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #56667A">{{t.card.toneLabel}}</span>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px"><span style="color: #0B2341; font-weight: 600">{{t.groups.g1}}</span><span style="display: inline-flex; align-items: center; gap: 6px; color: #0B2341; font-weight: 600; white-space: nowrap"><span style="width: 10px; height: 10px; border-radius: 999px; background: #0B2341"></span>{{t.card.toneGood}}</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px"><span style="color: #0B2341; font-weight: 600">{{t.groups.g3}}</span><span style="display: inline-flex; align-items: center; gap: 6px; color: #56667A; font-weight: 600; white-space: nowrap"><span style="width: 10px; height: 10px; border-radius: 999px; border: 2px solid #8D9AAB; box-sizing: border-box"></span>{{t.card.toneSteady}}</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px"><span style="color: #0B2341; font-weight: 600">{{t.groups.g2}}</span><span style="display: inline-flex; align-items: center; gap: 6px; color: #7A5100; font-weight: 600; white-space: nowrap"><span style="width: 10px; height: 10px; border-radius: 999px; background: #F2B544"></span>{{t.card.toneCare}}</span></div>
+</div>
+</div>
+<div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 6px; border-bottom: 1px solid #EEF0F3">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7A5100">{{t.card.attentionLabel}}</span>
+<span style="font-size: 15px; color: #0B2341; font-weight: 600">{{t.card.attention}}</span>
+</div>
+<div style="margin: 16px; padding: 16px; border-radius: 12px; background: #FBF6EA; border: 1px solid #F3E2B8; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7A5100">{{t.card.prayerLabel}}</span>
+<p style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: 19px; line-height: 1.4; color: #0B2341">{{t.card.prayer}}</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px">
+<span style="font-size: 13px; color: #56667A">{{t.card.caption}}</span>
+<span style="display: flex; gap: 8px">
+<span style="display: inline-flex; align-items: center; padding: 7px 12px; border-radius: 8px; border: 1.5px solid #0B2341; color: #0B2341; font-size: 13px; font-weight: 600">{{t.card.edit}}</span>
+<span style="display: inline-flex; align-items: center; padding: 7px 12px; border-radius: 8px; background: #0B2341; color: #FFFFFF; font-size: 13px; font-weight: 600">{{t.card.approve}}</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section aria-labelledby="philosophy-title" style="padding: clamp(64px, 9vw, 120px) 24px; background: #FFFFFF; border-top: 1px solid #E2E5EA">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(48px, 6vw, 80px)">
+<div style="display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 72px); align-items: flex-start">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">{{t.philosophy.eyebrow}}</span>
+<h2 id="philosophy-title" style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -0.015em; color: #0B2341; text-wrap: balance">{{t.philosophy.titleA}}<em style="font-style: italic; font-weight: 400">{{t.philosophy.titleEm}}</em></h2>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding-top: 8px">
+<p style="margin: 0; font-size: 19px; color: #33445A; text-wrap: pretty">{{t.philosophy.p1}}</p>
+<p style="margin: 0; font-size: 19px; color: #33445A; text-wrap: pretty">{{t.philosophy.p2}}</p>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 24px">
+<div style="padding: clamp(28px, 3.5vw, 40px); border-radius: 18px; background: #FBFAF7; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">{{t.philosophy.missionLabel}}</span>
+<p style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.3; color: #0B2341; text-wrap: pretty">{{t.philosophy.mission}}</p>
+</div>
+<div style="padding: clamp(28px, 3.5vw, 40px); border-radius: 18px; background: #FBFAF7; border: 1px solid #E2E5EA; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">{{t.philosophy.visionLabel}}</span>
+<p style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.3; color: #0B2341; text-wrap: pretty">{{t.philosophy.vision}}</p>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="cta-title" style="padding: clamp(72px, 10vw, 128px) 24px; background: #0B2341; color: #FFFFFF">
+<div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px">
+<svg width="56" height="56" viewBox="0 0 100 100" aria-hidden="true">
+<g transform="translate(10 10)">
+<path d="M22 42V27c0-4 2-7 5-9l13-9 13 9c3 2 5 5 5 9v15" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M40 7v16M34 15h12" fill="none" stroke="#F2B544" stroke-width="5.5" stroke-linecap="round"></path>
+<circle cx="40" cy="30" r="4.2" fill="#FFFFFF"></circle>
+<circle cx="29" cy="32" r="3.2" fill="#FFFFFF"></circle>
+<circle cx="51" cy="32" r="3.2" fill="#FFFFFF"></circle>
+<path d="M32 48c0-7 3.3-11 8-11s8 4 8 11" fill="#FFFFFF"></path>
+<path d="M23 47c0-5 2.3-8 6-8 2.2 0 3.8 1.1 4.8 3.1" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"></path>
+<path d="M57 47c0-5-2.3-8-6-8-2.2 0-3.8 1.1-4.8 3.1" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"></path>
+</g>
+</svg>
+<h2 id="cta-title" style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.06; letter-spacing: -0.015em; color: #FFFFFF; text-wrap: balance">{{t.cta.titleA}}<em style="font-style: italic; font-weight: 400; color: #F2B544">{{t.cta.titleEm}}</em></h2>
+<p style="margin: 0; font-size: 19px; color: #C3CDDA; text-wrap: pretty">{{t.cta.body}}</p>
+
+<div style="width: 100%; max-width: 560px; padding-top: 12px; text-align: left">
+<sc-if value="{{cta.showForm}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{cta.onSubmit}}" style="display: flex; flex-direction: column; gap: 8px">
+<label for="cta-email" style="font-size: 14px; font-weight: 600; color: #FFFFFF">{{t.form.ctaLabel}}</label>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<input id="cta-email" type="email" name="email" autocomplete="email" placeholder="{{t.form.placeholder}}" value="{{cta.email}}" onChange="{{cta.onEmail}}" aria-invalid="{{cta.isError}}" aria-describedby="cta-msg" style="flex: 1 1 240px; min-width: 0; height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 10px; border: 1.5px solid {{cta.darkBorderColor}}; background: #FFFFFF; font: inherit; font-size: 16px; color: #0B2341">
+<button type="submit" disabled="{{cta.loading}}" style="flex: 0 0 auto; height: 52px; padding: 0 24px; border: none; border-radius: 10px; background: #F2B544; color: #0B2341; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer">{{cta.ctaButton}}</button>
+</div>
+<div id="cta-msg" role="status" style="min-height: 22px; font-size: 14px; color: {{cta.darkMsgColor}}">{{cta.msg}}</div>
+</form>
+</sc-if>
+<sc-if value="{{cta.isSuccess}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; border-radius: 12px; background: #13325A; border: 1.5px solid #F2B544">
+<span style="flex: 0 0 auto; width: 32px; height: 32px; border-radius: 999px; background: #F2B544; display: flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+</span>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<strong style="color: #FFFFFF; font-size: 17px">{{t.form.successTitle}}</strong>
+<span style="font-size: 15px; color: #C3CDDA">{{t.form.successBody}}</span>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer style="background: #081A31; color: #C3CDDA; padding: 28px 24px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px">
+<span style="display: flex; align-items: center; gap: 10px">
+<span style="font-family: Inter, Arial, Helvetica, sans-serif; font-weight: 650; font-size: 18px; letter-spacing: -0.03em"><span style="color: #FFFFFF">ekklesia</span><span style="color: #F2B544">io</span></span>
+<span>© 2026 ekklesiaio</span>
+</span>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 20px">
+<a href="#privacy" style="color: #C3CDDA; text-decoration: underline; text-underline-offset: 3px">{{t.footer.privacy}}</a>
+<a href="mailto:[CONTACT EMAIL]" style="color: #C3CDDA; text-decoration: underline; text-underline-offset: 3px">{{t.footer.contact}}</a>
+</nav>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"language":{"editor":"enum","options":["auto","en","es"],"default":"auto","section":"Preview"},"$preview":{"width":1440,"height":5800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lang: this.initialLang(),
+      hero: { email: '', status: 'idle', msgKey: '' },
+      cta: { email: '', status: 'idle', msgKey: '' }
+    };
+  }
+  initialLang() {
+    var forced = this.props.language;
+    if (forced === 'en' || forced === 'es') return forced;
+    try {
+      var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || 'en'];
+      for (var i = 0; i < langs.length; i++) {
+        var code = String(langs[i]).toLowerCase();
+        if (code.indexOf('es') === 0) return 'es';
+        if (code.indexOf('en') === 0) return 'en';
+      }
+    } catch (e) {}
+    return 'en';
+  }
+  componentDidUpdate(prev) {
+    if (prev.language !== this.props.language) {
+      this.setState({ lang: this.initialLang() });
+    }
+  }
+  dict() {
+    return {
+      en: {
+        nav: { how: "How it works", features: "Features", ai: "AI insights", cta: "Join the waitlist", langLabel: "Language" },
+        hero: {
+          badge: "Coming soon",
+          tagline: "Small-group reporting for churches",
+          titleA: "See what’s happening ",
+          titleEm: "beyond Sunday.",
+          p1: "Your small groups are where much of your church’s ministry happens—but keeping track of dozens of groups shouldn’t require chasing down messages, spreadsheets, and reports.",
+          p2: "ekklesiaio makes small-group reporting simple for leaders and actionable for church leadership.",
+          howLink: "See how it works",
+          noSpam: "No spam. One email when we launch."
+        },
+        form: {
+          heroLabel: "Be the first to know when we launch",
+          ctaLabel: "Get notified when ekklesiaio launches",
+          placeholder: "you@yourchurch.org",
+          heroButton: "Join the waitlist",
+          ctaButton: "Notify me",
+          loading: "Joining…",
+          ctaLoading: "Sending…",
+          invalid: "Enter a valid email address, like you@yourchurch.org.",
+          successTitle: "You’re on the list.",
+          successBody: "Check your inbox to confirm your email—we’ll let you know as soon as ekklesiaio is ready."
+        },
+        groups: { g1: "Tuesday Young Adults", g2: "Riverside Families", g3: "Men’s Thursday Study" },
+        mock: {
+          aria: "Illustration of the ekklesiaio reports view",
+          title: "Group reports",
+          week: "This week",
+          progress: "18 of 24 groups have reported",
+          leader: "Leader:",
+          prayerCount: "1 prayer request",
+          submitted: "Submitted",
+          reminder: "Reminder sent",
+          needs: "Needs attention",
+          needsItem: "Prayer request · Riverside Families",
+          assign: "Assign follow-up"
+        },
+        problem: {
+          eyebrow: "The problem",
+          title: "You have the groups. But do you know what’s happening in them?",
+          intro: "You may have 20, 50, or 100 small groups meeting throughout your church.",
+          aLabel: "In your groups",
+          aItems: ["Leaders are having conversations.", "People are asking for prayer.", "Needs are coming up.", "Disciples are growing."],
+          bLabel: "What reaches leadership",
+          bLead: "But getting that information back to church leadership can be difficult.",
+          bItems: ["Reports don’t get submitted.", "Leaders forget.", "Pastors have to chase people down.", "Information gets buried in messages and spreadsheets.", "And even when reports arrive, reviewing them all takes time."],
+          closing: "ekklesiaio brings the process together."
+        },
+        how: {
+          eyebrow: "How it works",
+          title: "Simple for leaders. Powerful for church leadership.",
+          steps: [
+            { n: "01", title: "Leaders report", body: "Small-group leaders receive reminders and submit their reports through a simple workflow." },
+            { n: "02", title: "Leadership reviews", body: "Pastors, elders, and administrators get a centralized view of what’s happening across their groups." },
+            { n: "03", title: "Needs become visible", body: "Prayer requests, concerns, follow-ups, and other important information are easier to identify." },
+            { n: "04", title: "Follow up", body: "Keep track of what needs attention so important conversations don’t get lost." }
+          ]
+        },
+        features: {
+          eyebrow: "Features",
+          title: "Core features",
+          f1t: "Small Group Management", f1b: "Manage your groups and members from one place. Add, remove, and organize groups as your church changes.",
+          f2t: "Simple Reporting", f2b: "Make it easy for small-group leaders to submit their reports without adding another administrative burden.",
+          f3t: "Automated Reminders", f3b: "Help leaders remember to submit their reports without pastors having to chase them down.",
+          f4t: "Notifications", f4b: "Keep the right people informed when reports, requests, or other important updates need attention.",
+          f5t: "Follow-Up", f5b: "Turn information from your groups into actionable follow-ups so needs don’t get lost.",
+          f6t: "Church Visibility", f6b: "See what’s happening across your small groups and get a clearer picture of the life of your church."
+        },
+        ai: {
+          eyebrow: "AI-assisted insights",
+          titleA: "Every report heard, ",
+          titleEm: "even when there are dozens.",
+          intro: "ekklesiaio uses AI to help pastors and administrators make sense of every small-group report—so the people behind them get the attention they need.",
+          i1t: "Report summaries", i1b: "Get the key points of each report—and of the whole week across your groups—in a few sentences.",
+          i2t: "Tone at a glance", i2b: "See whether a group’s reports sound encouraged, steady, or in need of care—and notice when that changes.",
+          i3t: "“Pay attention to…”", i3b: "Surface the reports, requests, and changes that may need a pastor’s attention, so nothing important gets buried.",
+          i4t: "Prayer request suggestions", i4b: "Turn what leaders share into suggested prayer requests, ready for your team to review, edit, and share.",
+          trustAria: "How ekklesiaio uses AI",
+          t1s: "Always optional.", t1b: "Use the AI suggestions you find helpful and ignore the rest—or turn them off entirely. ekklesiaio works just as well without them.",
+          t2s: "Your leaders decide.", t2b: "AI only suggests. Nothing is shared or acted on until a person has reviewed it.",
+          t3s: "Your data stays private.", t3b: "Your church’s reports are never used to train AI models."
+        },
+        card: {
+          aria: "Illustration of ekklesiaio’s weekly AI insights",
+          title: "Weekly insights",
+          from: "From 18 reports",
+          summaryLabel: "Summary",
+          summary: "Most groups met as planned. Two groups mentioned members facing job loss, and attendance at Riverside Families has dipped for three weeks.",
+          toneLabel: "Tone by group",
+          toneGood: "Encouraged", toneSteady: "Steady", toneCare: "Needs care",
+          attentionLabel: "Pay attention to",
+          attention: "Riverside Families: attendance down three weeks in a row.",
+          prayerLabel: "Suggested prayer request",
+          prayer: "“Pray for the families in our church facing job loss—for provision, peace, and community around them.”",
+          caption: "Optional AI suggestion · review before sharing",
+          edit: "Edit", approve: "Approve"
+        },
+        philosophy: {
+          eyebrow: "Our philosophy",
+          titleA: "Technology should support ministry, ",
+          titleEm: "not replace it.",
+          p1: "ekklesiaio is built to reduce the administrative work around small-group ministry—not add more of it.",
+          p2: "When leaders spend less time chasing reports, they can spend more time caring for people, building community, and making disciples.",
+          missionLabel: "Mission",
+          mission: "To help churches care for people and make disciples by giving leaders better visibility into the life of their church.",
+          visionLabel: "Vision",
+          vision: "A future where every church can easily understand, support, and care for the people in its community."
+        },
+        cta: {
+          titleA: "Know your groups. Care for your people. ",
+          titleEm: "Make disciples.",
+          body: "Bring your small-group reporting, notifications, and follow-up into one simple platform."
+        },
+        footer: { privacy: "Privacy policy", contact: "Contact" }
+      },
+      es: {
+        nav: { how: "Cómo funciona", features: "Funciones", ai: "IA", cta: "Unirme a la lista", langLabel: "Idioma" },
+        hero: {
+          badge: "Muy pronto",
+          tagline: "Reportes de grupos pequeños para iglesias",
+          titleA: "Vea lo que sucede ",
+          titleEm: "más allá del domingo.",
+          p1: "Sus grupos pequeños son donde sucede gran parte del ministerio de su iglesia, pero dar seguimiento a decenas de grupos no debería requerir perseguir mensajes, hojas de cálculo y reportes.",
+          p2: "ekklesiaio hace que los reportes de grupos pequeños sean sencillos para los líderes y útiles para el liderazgo de la iglesia.",
+          howLink: "Vea cómo funciona",
+          noSpam: "Sin spam. Un solo correo cuando lancemos."
+        },
+        form: {
+          heroLabel: "Entérese primero cuando lancemos",
+          ctaLabel: "Reciba un aviso cuando ekklesiaio esté disponible",
+          placeholder: "nombre@suiglesia.org",
+          heroButton: "Unirme a la lista de espera",
+          ctaButton: "Avísenme",
+          loading: "Enviando…",
+          ctaLoading: "Enviando…",
+          invalid: "Ingrese un correo válido, por ejemplo nombre@suiglesia.org.",
+          successTitle: "Ya está en la lista.",
+          successBody: "Revise su bandeja de entrada para confirmar su correo. Le avisaremos en cuanto ekklesiaio esté listo."
+        },
+        groups: { g1: "Jóvenes del martes", g2: "Familias del Río", g3: "Estudio de hombres del jueves" },
+        mock: {
+          aria: "Ilustración de la vista de reportes de ekklesiaio",
+          title: "Reportes de grupos",
+          week: "Esta semana",
+          progress: "18 de 24 grupos han reportado",
+          leader: "Líder:",
+          prayerCount: "1 petición de oración",
+          submitted: "Enviado",
+          reminder: "Recordatorio enviado",
+          needs: "Requiere atención",
+          needsItem: "Petición de oración · Familias del Río",
+          assign: "Asignar seguimiento"
+        },
+        problem: {
+          eyebrow: "El problema",
+          title: "Usted tiene los grupos. ¿Pero sabe lo que está pasando en ellos?",
+          intro: "Puede que tenga 20, 50 o 100 grupos pequeños reuniéndose en su iglesia.",
+          aLabel: "En sus grupos",
+          aItems: ["Los líderes están teniendo conversaciones.", "Las personas están pidiendo oración.", "Están surgiendo necesidades.", "Los discípulos están creciendo."],
+          bLabel: "Lo que llega al liderazgo",
+          bLead: "Pero hacer llegar esa información al liderazgo de la iglesia puede ser difícil.",
+          bItems: ["Los reportes no se envían.", "Los líderes se olvidan.", "Los pastores tienen que andar persiguiendo a la gente.", "La información se pierde entre mensajes y hojas de cálculo.", "E incluso cuando llegan los reportes, revisarlos todos toma tiempo."],
+          closing: "ekklesiaio reúne todo el proceso."
+        },
+        how: {
+          eyebrow: "Cómo funciona",
+          title: "Sencillo para los líderes. Poderoso para el liderazgo de la iglesia.",
+          steps: [
+            { n: "01", title: "Los líderes reportan", body: "Los líderes de grupos pequeños reciben recordatorios y envían sus reportes mediante un proceso sencillo." },
+            { n: "02", title: "El liderazgo revisa", body: "Pastores, ancianos y administradores obtienen una vista centralizada de lo que sucede en sus grupos." },
+            { n: "03", title: "Las necesidades se hacen visibles", body: "Las peticiones de oración, preocupaciones, seguimientos y otra información importante son más fáciles de identificar." },
+            { n: "04", title: "Dé seguimiento", body: "Lleve el control de lo que requiere atención para que ninguna conversación importante se pierda." }
+          ]
+        },
+        features: {
+          eyebrow: "Funciones",
+          title: "Funciones principales",
+          f1t: "Gestión de grupos pequeños", f1b: "Administre sus grupos y miembros desde un solo lugar. Agregue, elimine y organice grupos a medida que su iglesia cambia.",
+          f2t: "Reportes sencillos", f2b: "Facilite que los líderes de grupos pequeños envíen sus reportes sin añadir otra carga administrativa.",
+          f3t: "Recordatorios automáticos", f3b: "Ayude a los líderes a recordar enviar sus reportes sin que los pastores tengan que perseguirlos.",
+          f4t: "Notificaciones", f4b: "Mantenga informadas a las personas indicadas cuando reportes, peticiones u otras novedades importantes requieran atención.",
+          f5t: "Seguimiento", f5b: "Convierta la información de sus grupos en acciones de seguimiento para que ninguna necesidad se pierda.",
+          f6t: "Visibilidad de la iglesia", f6b: "Vea lo que sucede en sus grupos pequeños y obtenga una imagen más clara de la vida de su iglesia."
+        },
+        ai: {
+          eyebrow: "Información asistida por IA",
+          titleA: "Cada reporte escuchado, ",
+          titleEm: "aunque sean decenas.",
+          intro: "ekklesiaio usa IA para ayudar a pastores y administradores a entender cada reporte de grupo pequeño, para que las personas detrás de ellos reciban la atención que necesitan.",
+          i1t: "Resúmenes de reportes", i1b: "Obtenga los puntos clave de cada reporte, y de toda la semana en sus grupos, en pocas frases.",
+          i2t: "El tono de un vistazo", i2b: "Vea si los reportes de un grupo suenan animados, estables o con necesidad de cuidado, y note cuándo eso cambia.",
+          i3t: "“Preste atención a…”", i3b: "Destaque los reportes, peticiones y cambios que podrían requerir la atención de un pastor, para que nada importante quede enterrado.",
+          i4t: "Sugerencias de peticiones de oración", i4b: "Convierta lo que comparten los líderes en peticiones de oración sugeridas, listas para que su equipo las revise, edite y comparta.",
+          trustAria: "Cómo usa ekklesiaio la IA",
+          t1s: "Siempre opcional.", t1b: "Use las sugerencias de IA que le sean útiles e ignore el resto, o desactívelas por completo. ekklesiaio funciona igual de bien sin ellas.",
+          t2s: "Sus líderes deciden.", t2b: "La IA solo sugiere. Nada se comparte ni se pone en acción sin que una persona lo haya revisado.",
+          t3s: "Sus datos son privados.", t3b: "Los reportes de su iglesia nunca se usan para entrenar modelos de IA."
+        },
+        card: {
+          aria: "Ilustración de la información semanal con IA de ekklesiaio",
+          title: "Información de la semana",
+          from: "De 18 reportes",
+          summaryLabel: "Resumen",
+          summary: "La mayoría de los grupos se reunieron según lo planeado. Dos grupos mencionaron miembros que perdieron su empleo, y la asistencia en Familias del Río ha bajado durante tres semanas.",
+          toneLabel: "Tono por grupo",
+          toneGood: "Animado", toneSteady: "Estable", toneCare: "Necesita cuidado",
+          attentionLabel: "Preste atención a",
+          attention: "Familias del Río: la asistencia ha bajado tres semanas seguidas.",
+          prayerLabel: "Petición de oración sugerida",
+          prayer: "“Oremos por las familias de nuestra iglesia que enfrentan la pérdida de empleo: por provisión, paz y una comunidad que las rodee.”",
+          caption: "Sugerencia opcional de IA · revisar antes de compartir",
+          edit: "Editar", approve: "Aprobar"
+        },
+        philosophy: {
+          eyebrow: "Nuestra filosofía",
+          titleA: "La tecnología debe apoyar el ministerio, ",
+          titleEm: "no reemplazarlo.",
+          p1: "ekklesiaio está diseñado para reducir el trabajo administrativo del ministerio de grupos pequeños, no para añadir más.",
+          p2: "Cuando los líderes dedican menos tiempo a perseguir reportes, pueden dedicar más tiempo a cuidar de las personas, edificar comunidad y hacer discípulos.",
+          missionLabel: "Misión",
+          mission: "Ayudar a las iglesias a cuidar de las personas y hacer discípulos, dando a sus líderes una mejor visibilidad de la vida de su iglesia.",
+          visionLabel: "Visión",
+          vision: "Un futuro donde cada iglesia pueda conocer, apoyar y cuidar fácilmente a las personas de su comunidad."
+        },
+        cta: {
+          titleA: "Conozca sus grupos. Cuide a su gente. ",
+          titleEm: "Haga discípulos.",
+          body: "Reúna los reportes de sus grupos pequeños, las notificaciones y el seguimiento en una sola plataforma sencilla."
+        },
+        footer: { privacy: "Política de privacidad", contact: "Contacto" }
+      }
+    };
+  }
+  setForm(key, patch) {
+    var s = {};
+    s[key] = Object.assign({}, this.state[key], patch);
+    this.setState(s);
+  }
+  formVals(key, t) {
+    var self = this;
+    var f = this.state[key];
+    var isError = f.status === 'error';
+    var loading = f.status === 'loading';
+    return {
+      email: f.email,
+      msg: isError ? t.form.invalid : '',
+      isError: isError,
+      loading: loading,
+      isSuccess: f.status === 'success',
+      showForm: f.status !== 'success',
+      borderColor: isError ? '#B42318' : '#C9D0DA',
+      darkBorderColor: isError ? '#FDA29B' : '#FFFFFF',
+      msgColor: isError ? '#B42318' : '#56667A',
+      darkMsgColor: isError ? '#FDA29B' : '#C3CDDA',
+      heroButton: loading ? t.form.loading : t.form.heroButton,
+      ctaButton: loading ? t.form.ctaLoading : t.form.ctaButton,
+      onEmail: function (e) {
+        var cur = self.state[key];
+        self.setForm(key, { email: e.target.value, status: cur.status === 'error' ? 'idle' : cur.status });
+      },
+      onSubmit: function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+        var value = (self.state[key].email || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+          self.setForm(key, { status: 'error' });
+          return;
+        }
+        self.setForm(key, { status: 'loading' });
+        setTimeout(function () { self.setForm(key, { status: 'success' }); }, 900);
+      }
+    };
+  }
+  renderVals() {
+    var self = this;
+    var lang = this.state.lang === 'es' ? 'es' : 'en';
+    var t = this.dict()[lang];
+    var isEn = lang === 'en';
+    return {
+      lang: lang,
+      t: t,
+      isEn: isEn,
+      isEs: !isEn,
+      enBg: isEn ? '#0B2341' : 'transparent',
+      enColor: isEn ? '#FFFFFF' : '#33445A',
+      esBg: isEn ? 'transparent' : '#0B2341',
+      esColor: isEn ? '#33445A' : '#FFFFFF',
+      setEn: function () { self.setState({ lang: 'en' }); },
+      setEs: function () { self.setState({ lang: 'es' }); },
+      hero: this.formVals('hero', t),
+      cta: this.formVals('cta', t)
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ekklesiaio — Waitlist form states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1200px; height: 860px; box-sizing: border-box; padding: 56px; background: #FBFAF7; font-family: 'Figtree', ui-sans-serif, system-ui, sans-serif; color: #33445A; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 40px; color: #0B2341">Waitlist form states</h1>
+<p style="margin: 0; font-size: 16px; color: #56667A">One component, six states. The same states apply to the closing “Notify me” form on navy.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">1 · Default</span>
+<form style="display: flex; flex-direction: column; gap: 8px">
+<label for="s1" style="font-size: 14px; font-weight: 600; color: #0B2341">Be the first to know when we launch</label>
+<input id="s1" type="email" placeholder="you@yourchurch.org" style="height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 10px; border: 1.5px solid #C9D0DA; background: #FFFFFF; font: inherit; font-size: 16px; color: #0B2341">
+<button type="button" style="height: 52px; border: none; border-radius: 10px; background: #F2B544; color: #0B2341; font: inherit; font-size: 16px; font-weight: 700">Join the waitlist</button>
+</form>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">2 · Focused</span>
+<form style="display: flex; flex-direction: column; gap: 8px">
+<label for="s2" style="font-size: 14px; font-weight: 600; color: #0B2341">Be the first to know when we launch</label>
+<input id="s2" type="email" value="pastor@gracechurch.org" style="height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 10px; border: 1.5px solid #0B2341; box-shadow: 0 0 0 4px rgba(242, 181, 68, 0.45); background: #FFFFFF; font: inherit; font-size: 16px; color: #0B2341">
+<button type="button" style="height: 52px; border: none; border-radius: 10px; background: #F2B544; color: #0B2341; font: inherit; font-size: 16px; font-weight: 700">Join the waitlist</button>
+</form>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">3 · Submitting</span>
+<form style="display: flex; flex-direction: column; gap: 8px">
+<label for="s3" style="font-size: 14px; font-weight: 600; color: #0B2341">Be the first to know when we launch</label>
+<input id="s3" type="email" value="pastor@gracechurch.org" disabled style="height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 10px; border: 1.5px solid #C9D0DA; background: #F4F5F7; font: inherit; font-size: 16px; color: #56667A">
+<button type="button" disabled style="height: 52px; border: none; border-radius: 10px; background: #F7D48F; color: #0B2341; font: inherit; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B2341" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.2-8.56"></path></svg>
+<span>Joining…</span>
+</button>
+</form>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">4 · Invalid email</span>
+<form style="display: flex; flex-direction: column; gap: 8px">
+<label for="s4" style="font-size: 14px; font-weight: 600; color: #0B2341">Be the first to know when we launch</label>
+<input id="s4" type="email" value="pastor@gracechurch" aria-invalid="true" aria-describedby="s4-msg" style="height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 10px; border: 1.5px solid #B42318; background: #FFFFFF; font: inherit; font-size: 16px; color: #0B2341">
+<button type="button" style="height: 52px; border: none; border-radius: 10px; background: #F2B544; color: #0B2341; font: inherit; font-size: 16px; font-weight: 700">Join the waitlist</button>
+<span id="s4-msg" role="alert" style="font-size: 14px; color: #B42318">Enter a valid email address, like you@yourchurch.org.</span>
+</form>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">5 · Success / already joined</span>
+<div role="status" style="display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; border-radius: 12px; background: #FFFFFF; border: 1.5px solid #0B2341">
+<span style="flex: 0 0 auto; width: 32px; height: 32px; border-radius: 999px; background: #0B2341; display: flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2B544" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+</span>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<strong style="color: #0B2341; font-size: 17px">You’re on the list.</strong>
+<span style="font-size: 15px; color: #33445A">Check your inbox to confirm your email—we’ll let you know as soon as ekklesiaio is ready.</span>
+</div>
+</div>
+<span style="font-size: 13px; color: #56667A">Shown for a new signup and for an email already on the list, so the form never reveals who has signed up.</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E5EA">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5B00">6 · Server error</span>
+<form style="display: flex; flex-direction: column; gap: 8px">
+<label for="s6" style="font-size: 14px; font-weight: 600; color: #0B2341">Be the first to know when we launch</label>
+<input id="s6" type="email" value="pastor@gracechurch.org" style="height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 10px; border: 1.5px solid #C9D0DA; background: #FFFFFF; font: inherit; font-size: 16px; color: #0B2341">
+<button type="button" style="height: 52px; border: none; border-radius: 10px; background: #F2B544; color: #0B2341; font: inherit; font-size: 16px; font-weight: 700">Try again</button>
+<span role="alert" style="font-size: 14px; color: #B42318">Something went wrong on our end. Please try again in a moment.</span>
+</form>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":860}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

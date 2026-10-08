@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "how": "Cómo funciona",
+    "features": "Funciones",
+    "ai": "IA",
+    "cta": "Unirme a la lista",
+    "langLabel": "Idioma"
+  },
+  "hero": {
+    "badge": "Muy pronto",
+    "tagline": "Reportes de grupos pequeños para iglesias",
+    "titleA": "Vea lo que sucede ",
+    "titleEm": "más allá del domingo.",
+    "p1": "Sus grupos pequeños son donde sucede gran parte del ministerio de su iglesia, pero dar seguimiento a decenas de grupos no debería requerir perseguir mensajes, hojas de cálculo y reportes.",
+    "p2": "ekklesiaio hace que los reportes de grupos pequeños sean sencillos para los líderes y útiles para el liderazgo de la iglesia.",
+    "howLink": "Vea cómo funciona",
+    "noSpam": "Sin spam. Un solo correo cuando lancemos."
+  },
+  "form": {
+    "heroLabel": "Entérese primero cuando lancemos",
+    "ctaLabel": "Reciba un aviso cuando ekklesiaio esté disponible",
+    "placeholder": "nombre@suiglesia.org",
+    "heroButton": "Unirme a la lista de espera",
+    "ctaButton": "Avísenme",
+    "loading": "Enviando…",
+    "ctaLoading": "Enviando…",
+    "invalid": "Ingrese un correo válido, por ejemplo nombre@suiglesia.org.",
+    "successTitle": "Ya está en la lista.",
+    "successBody": "Revise su bandeja de entrada para confirmar su correo. Le avisaremos en cuanto ekklesiaio esté listo.",
+    "serverError": "Algo salió mal de nuestro lado. Inténtelo de nuevo en un momento.",
+    "retry": "Intentar de nuevo",
+    "honeypotLabel": "Deje este campo vacío"
+  },
+  "groups": {
+    "g1": "Jóvenes del martes",
+    "g2": "Familias del Río",
+    "g3": "Estudio de hombres del jueves"
+  },
+  "mock": {
+    "aria": "Ilustración de la vista de reportes de ekklesiaio",
+    "title": "Reportes de grupos",
+    "week": "Esta semana",
+    "progress": "18 de 24 grupos han reportado",
+    "leader": "Líder:",
+    "prayerCount": "1 petición de oración",
+    "submitted": "Enviado",
+    "reminder": "Recordatorio enviado",
+    "needs": "Requiere atención",
+    "needsItem": "Petición de oración · Familias del Río",
+    "assign": "Asignar seguimiento"
+  },
+  "problem": {
+    "eyebrow": "El problema",
+    "title": "Usted tiene los grupos. ¿Pero sabe lo que está pasando en ellos?",
+    "intro": "Puede que tenga 20, 50 o 100 grupos pequeños reuniéndose en su iglesia.",
+    "aLabel": "En sus grupos",
+    "aItems": [
+      "Los líderes están teniendo conversaciones.",
+      "Las personas están pidiendo oración.",
+      "Están surgiendo necesidades.",
+      "Los discípulos están creciendo."
+    ],
+    "bLabel": "Lo que llega al liderazgo",
+    "bLead": "Pero hacer llegar esa información al liderazgo de la iglesia puede ser difícil.",
+    "bItems": [
+      "Los reportes no se envían.",
+      "Los líderes se olvidan.",
+      "Los pastores tienen que andar persiguiendo a la gente.",
+      "La información se pierde entre mensajes y hojas de cálculo.",
+      "E incluso cuando llegan los reportes, revisarlos todos toma tiempo."
+    ],
+    "closing": "ekklesiaio reúne todo el proceso."
+  },
+  "how": {
+    "eyebrow": "Cómo funciona",
+    "title": "Sencillo para los líderes. Poderoso para el liderazgo de la iglesia.",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Los líderes reportan",
+        "body": "Los líderes de grupos pequeños reciben recordatorios y envían sus reportes mediante un proceso sencillo."
+      },
+      {
+        "n": "02",
+        "title": "El liderazgo revisa",
+        "body": "Pastores, ancianos y administradores obtienen una vista centralizada de lo que sucede en sus grupos."
+      },
+      {
+        "n": "03",
+        "title": "Las necesidades se hacen visibles",
+        "body": "Las peticiones de oración, preocupaciones, seguimientos y otra información importante son más fáciles de identificar."
+      },
+      {
+        "n": "04",
+        "title": "Dé seguimiento",
+        "body": "Lleve el control de lo que requiere atención para que ninguna conversación importante se pierda."
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Funciones",
+    "title": "Funciones principales",
+    "f1t": "Gestión de grupos pequeños",
+    "f1b": "Administre sus grupos y miembros desde un solo lugar. Agregue, elimine y organice grupos a medida que su iglesia cambia.",
+    "f2t": "Reportes sencillos",
+    "f2b": "Facilite que los líderes de grupos pequeños envíen sus reportes sin añadir otra carga administrativa.",
+    "f3t": "Recordatorios automáticos",
+    "f3b": "Ayude a los líderes a recordar enviar sus reportes sin que los pastores tengan que perseguirlos.",
+    "f4t": "Notificaciones",
+    "f4b": "Mantenga informadas a las personas indicadas cuando reportes, peticiones u otras novedades importantes requieran atención.",
+    "f5t": "Seguimiento",
+    "f5b": "Convierta la información de sus grupos en acciones de seguimiento para que ninguna necesidad se pierda.",
+    "f6t": "Visibilidad de la iglesia",
+    "f6b": "Vea lo que sucede en sus grupos pequeños y obtenga una imagen más clara de la vida de su iglesia."
+  },
+  "ai": {
+    "eyebrow": "Información asistida por IA",
+    "titleA": "Cada reporte escuchado, ",
+    "titleEm": "aunque sean decenas.",
+    "intro": "ekklesiaio usa IA para ayudar a pastores y administradores a entender cada reporte de grupo pequeño, para que las personas detrás de ellos reciban la atención que necesitan.",
+    "i1t": "Resúmenes de reportes",
+    "i1b": "Obtenga los puntos clave de cada reporte, y de toda la semana en sus grupos, en pocas frases.",
+    "i2t": "El tono de un vistazo",
+    "i2b": "Vea si los reportes de un grupo suenan animados, estables o con necesidad de cuidado, y note cuándo eso cambia.",
+    "i3t": "“Preste atención a…”",
+    "i3b": "Destaque los reportes, peticiones y cambios que podrían requerir la atención de un pastor, para que nada importante quede enterrado.",
+    "i4t": "Sugerencias de peticiones de oración",
+    "i4b": "Convierta lo que comparten los líderes en peticiones de oración sugeridas, listas para que su equipo las revise, edite y comparta.",
+    "trustAria": "Cómo usa ekklesiaio la IA",
+    "t1s": "Siempre opcional.",
+    "t1b": "Use las sugerencias de IA que le sean útiles e ignore el resto, o desactívelas por completo. ekklesiaio funciona igual de bien sin ellas.",
+    "t2s": "Sus líderes deciden.",
+    "t2b": "La IA solo sugiere. Nada se comparte ni se pone en acción sin que una persona lo haya revisado.",
+    "t3s": "Sus datos son privados.",
+    "t3b": "Los reportes de su iglesia nunca se usan para entrenar modelos de IA."
+  },
+  "card": {
+    "aria": "Ilustración de la información semanal con IA de ekklesiaio",
+    "title": "Información de la semana",
+    "from": "De 18 reportes",
+    "summaryLabel": "Resumen",
+    "summary": "La mayoría de los grupos se reunieron según lo planeado. Dos grupos mencionaron miembros que perdieron su empleo, y la asistencia en Familias del Río ha bajado durante tres semanas.",
+    "toneLabel": "Tono por grupo",
+    "toneGood": "Animado",
+    "toneSteady": "Estable",
+    "toneCare": "Necesita cuidado",
+    "attentionLabel": "Preste atención a",
+    "attention": "Familias del Río: la asistencia ha bajado tres semanas seguidas.",
+    "prayerLabel": "Petición de oración sugerida",
+    "prayer": "“Oremos por las familias de nuestra iglesia que enfrentan la pérdida de empleo: por provisión, paz y una comunidad que las rodee.”",
+    "caption": "Sugerencia opcional de IA · revisar antes de compartir",
+    "edit": "Editar",
+    "approve": "Aprobar"
+  },
+  "philosophy": {
+    "eyebrow": "Nuestra filosofía",
+    "titleA": "La tecnología debe apoyar el ministerio, ",
+    "titleEm": "no reemplazarlo.",
+    "p1": "ekklesiaio está diseñado para reducir el trabajo administrativo del ministerio de grupos pequeños, no para añadir más.",
+    "p2": "Cuando los líderes dedican menos tiempo a perseguir reportes, pueden dedicar más tiempo a cuidar de las personas, edificar comunidad y hacer discípulos.",
+    "missionLabel": "Misión",
+    "mission": "Ayudar a las iglesias a cuidar de las personas y hacer discípulos, dando a sus líderes una mejor visibilidad de la vida de su iglesia.",
+    "visionLabel": "Visión",
+    "vision": "Un futuro donde cada iglesia pueda conocer, apoyar y cuidar fácilmente a las personas de su comunidad."
+  },
+  "cta": {
+    "titleA": "Conozca sus grupos. Cuide a su gente. ",
+    "titleEm": "Haga discípulos.",
+    "body": "Reúna los reportes de sus grupos pequeños, las notificaciones y el seguimiento en una sola plataforma sencilla."
+  },
+  "footer": {
+    "privacy": "Política de privacidad",
+    "contact": "Contacto"
+  },
+  "meta": {
+    "title": "ekklesiaio — Reportes de grupos pequeños para iglesias",
+    "description": "Vea lo que sucede más allá del domingo. ekklesiaio hace que los reportes de grupos pequeños sean sencillos para los líderes y útiles para el liderazgo de la iglesia. Únase a la lista de espera.",
+    "ogAlt": "ekklesiaio — Vea lo que sucede más allá del domingo."
+  },
+  "confirm": {
+    "title": "Correo confirmado.",
+    "body": "¡Gracias! Le escribiremos en cuanto ekklesiaio esté listo.",
+    "invalidTitle": "Este enlace expiró o no es válido.",
+    "invalidBody": "Vuelva a unirse a la lista de espera y le enviaremos un nuevo correo de confirmación.",
+    "back": "Volver a ekklesiaio"
+  },
+  "unsubscribe": {
+    "title": "Le hemos quitado de la lista.",
+    "body": "No recibirá más correos nuestros sobre ekklesiaio.",
+    "back": "Volver a ekklesiaio"
+  },
+  "email": {
+    "subject": "Confirme su lugar en la lista de espera de ekklesiaio",
+    "preview": "Un clic para confirmar su correo.",
+    "heading": "Confirme su correo",
+    "body": "Gracias por su interés en ekklesiaio. Confirme su dirección de correo para avisarle cuando lancemos.",
+    "button": "Confirmar mi correo",
+    "ignore": "Si usted no se registró, puede ignorar este correo.",
+    "unsubscribe": "Cancelar suscripción"
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "draftNotice": "[BORRADOR — Luis debe revisarlo antes del lanzamiento]"
+  },
+  "switcher": {
+    "switchTo": "View in English"
+  },
+  "og": {
+    "subline": "Reportes de grupos pequeños, sencillos para los líderes y útiles para el liderazgo de la iglesia."
+  }
+}
