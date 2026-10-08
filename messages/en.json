@@ -202,7 +202,10 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "draftNotice": "[DRAFT — Luis to review before launch]"
+    "draftNotice": "[DRAFT — Luis to review before launch]",
+    "reviewMarker": "[Luis to review]",
+    "turnstileHeading": "Spam protection",
+    "turnstileBody": "To protect the waitlist form from spam and abuse, this site uses Cloudflare Turnstile. Information collected by Turnstile is handled as described in the <link>Cloudflare Turnstile Privacy Addendum</link>."
   },
   "switcher": {
     "switchTo": "Ver en español"

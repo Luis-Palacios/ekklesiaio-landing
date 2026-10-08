@@ -51,6 +51,8 @@ This folder already has files (docs, brand, messages, public/brand, icons), and 
 - **Waitlist behavior:** the resend throttle and the unsubscribed → pending move are conditional `UPDATE`s, so concurrent submits can't both send. If a send fails, `confirm_sent_at` is restored so a retry isn't throttled. The action re-sends the typed email in its state, because React resets the form after the action runs.
 - **Turnstile:** it's explicitly rendered with `appearance: "interaction-only"` and reset after every result that isn't success (tokens are single-use, 5 min). Without JS, the form posts but has no token, so it gets the error state. In local dev, use Cloudflare's test keys (see `.env.example`). A missing secret fails closed.
 - **Rate limit:** Upstash env vars are `KV_REST_API_URL` / `KV_REST_API_TOKEN` (the Vercel integration's names), passed to `new Redis({ url, token })` explicitly. Upstash's docs only document `UPSTASH_REDIS_REST_*` for `Redis.fromEnv()`. If they're missing, the rate limit is skipped outside production and fails closed in production. Not used locally.
+- **Privacy page:** `/[locale]/privacy` is a draft shell (`noindex`) holding only the Turnstile disclosure, marked `privacy.reviewMarker`. Cloudflare requires a reference to its Turnstile Privacy Addendum for Invisible mode (DESIGN.md §9). The rest of the §9 facts list is still open.
+- **Header links:** they point at `/{locale}#section`, not a bare `#section`, so they work from other pages too. On the home page they're still same-document jumps.
 - **Open questions for Luis:** the unused `switcher.switchTo` key; a translated 404 page, which needs copy that doesn't exist yet; the Spanish text for `nav.primaryLabel` / `footer.navLabel` (currently `[ES TODO]`).
 
 ## Commands

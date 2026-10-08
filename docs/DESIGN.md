@@ -222,7 +222,7 @@ Load the fonts as ArrayBuffers for `ImageResponse`. Set `alt` from `meta.ogAlt`.
 - Decorative SVGs get `aria-hidden="true"`. Each illustration card gets `role="img"` plus a translated `aria-label`.
 
 ## 9. Open items for Luis (don't invent these)
-- [ ] **Privacy policy text.** Build `/[locale]/privacy` with a clearly marked DRAFT notice (`privacy.draftNotice`) and a short list of facts only: what is collected (email, language, signup source), why (launch updates), the provider list (Vercel, Neon, Resend, Cloudflare), how to unsubscribe, the contact email, and that reports and data are never used to train AI models. Luis reviews and finalizes it.
+- [ ] **Privacy policy text.** Build `/[locale]/privacy` with a clearly marked DRAFT notice (`privacy.draftNotice`) and a short list of facts only: what is collected (email, language, signup source), why (launch updates), the provider list (Vercel, Neon, Resend, Cloudflare), how to unsubscribe, the contact email, and that reports and data are never used to train AI models. It must also **reference Cloudflare's [Turnstile Privacy Addendum](https://www.cloudflare.com/turnstile-privacy-policy/)**, a condition of running Turnstile in Invisible mode (the addendum is English-only, so the Spanish page notes that). Luis reviews and finalizes it.
 - [ ] `CONTACT_EMAIL` and `EMAIL_FROM` addresses.
 - [ ] An outlined wordmark SVG (§3.4).
 - [ ] Replace the illustration cards with real screenshots once the staff app is restyled (optional).
