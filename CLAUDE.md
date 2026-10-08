@@ -26,6 +26,7 @@ npm, Node 24.
 - `npm run dev`: dev server (Turbopack) at http://localhost:3000
 - `npm run build` / `npm start`: production build and serve
 - `npm run lint`: ESLint (flat config, Next core-web-vitals + TypeScript + Prettier)
-- `npm run typecheck`: `next typegen && tsc --noEmit`
+- `npm run typecheck`: `next typegen && tsc --noEmit`. If it reports errors in `.next/dev/types` after routes move, delete `.next` and rerun.
+- `npm run check:messages`: fails if `messages/en.json` and `messages/es.json` keys differ
 - `npm run format` / `npm run format:check`: Prettier with Tailwind class sorting. `brand/`, `docs/`, `CLAUDE.md` and `AGENTS.md` are excluded and keep their authored formatting.
 - (to add in later steps: test, e2e, db:generate, db:migrate)
