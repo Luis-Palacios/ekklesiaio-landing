@@ -64,5 +64,6 @@ npm, Node 24.
 - `npm run check:messages`: fails if `messages/en.json` and `messages/es.json` keys differ
 - `npm run format` / `npm run format:check`: Prettier with Tailwind class sorting. `brand/`, `docs/`, `CLAUDE.md` and `AGENTS.md` are excluded and keep their authored formatting.
 - `npm test`: Vitest unit tests (`src/**/*.test.ts`). `server-only` is aliased to an empty module in `vitest.config.mts`.
-- `npm run db:generate` / `npm run db:migrate`: drizzle-kit. Migrations live in `drizzle/`, and the config loads `.env.local` for `DATABASE_URL`.
+- `npm run db:generate` / `npm run db:migrate`: drizzle-kit, for local dev against the Neon dev branch. Migrations live in `drizzle/`, and the config loads `.env.local` for `DATABASE_URL`. Never `drizzle-kit push` against a shared database.
+- `vercel-build` (Vercel runs it instead of `build`): `node scripts/migrate.mts && next build`. The script applies migrations only when `VERCEL_ENV` is production or preview, over `DATABASE_URL_UNPOOLED` (falling back to `DATABASE_URL`). Migrations must be backward-compatible with the deployed code (expand → deploy → contract; DESIGN.md §5.5).
 - (to add in later steps: e2e)
