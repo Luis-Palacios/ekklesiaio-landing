@@ -1,0 +1,11 @@
+.next/
+node_modules/
+package-lock.json
+
+# Hand-maintained sources: keep their formatting as authored.
+brand/
+docs/
+icons/
+public/brand/
+CLAUDE.md
+AGENTS.md
