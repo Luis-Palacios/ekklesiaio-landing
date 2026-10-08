@@ -21,6 +21,28 @@ Pre-launch, bilingual (EN/ES) landing page with an email waitlist for ekklesiaio
 ## Scaffolding note
 This folder already has files (docs, brand, messages, public/brand, icons), and `create-next-app` refuses non-empty folders. Scaffold into a temporary sibling folder and move the generated files in, without overwriting anything listed here. `icons/` holds the original logo files; `public/brand/` holds the cleaned copies the app uses.
 
+## Workflow
+- Work one step of DESIGN.md §11 at a time, on its own branch (`step-N-<name>`) and PR.
+- Before writing code for a step, show the plan and wait for approval. Stop after the step so Luis can review.
+- Don't deploy or push without asking. Luis manages the Vercel project.
+
+## Progress (keep this current)
+- [x] **Step 1: Scaffold** (PR #1, merged)
+- [x] **Step 2: i18n** (branch `step-2-i18n`, PR #2)
+- [ ] **Step 3: Static page** ← next. Header, every section, footer, both illustrations, logo components. Match the design at 1440px and 390px.
+- [ ] Step 4: Waitlist · [ ] Step 5: Email · [ ] Step 6: Polish
+
+## Decisions and gotchas so far
+- **Next 16.4:** the middleware file is `src/proxy.ts` (renamed from `middleware.ts` in Next 16; DESIGN.md §2 predates this). `cacheComponents` and `partialPrefetching` are on (create-next-app defaults).
+- **next-intl:** the locale comes from `next/root-params` in `src/i18n/request.ts`, so no `setRequestLocale` calls are needed and `/en`, `/es` stay static. `next/root-params` doesn't work in route handlers, so `opengraph-image.tsx` (step 6) must read the locale from its `params`.
+- **Client messages:** the layout's `NextIntlClientProvider` passes `messages={null}`. Give a client component only what it needs: either pass strings as props from a server parent, or wrap it in a provider with just its namespace (e.g. `form`).
+- **SEO:** hreflang comes only from `generateMetadata` (`alternates`). next-intl's `Link` header is off (`alternateLinks: false`).
+- **Proxy matcher:** it must contain `\\.` (escaped dot) in the TS string. After any change, check the compiled pattern in `.next/server/functions-config-manifest.json`. A lost escape silently stops the proxy from running on every path except `/`.
+- **Language names:** "English"/"Español" (autonyms) live in `localeNames` in `src/i18n/routing.ts`, not in the message files.
+- **`npm audit`:** 5 "high" findings are one advisory in `braces` (GHSA-vfj7-8cjw-p6xm), reached only through the ESLint config. There's no patched release, and `npm audit --omit=dev` is clean. Don't run `npm audit fix --force`, because it downgrades `eslint-config-next` to 14. Recheck when `braces` ships a fix.
+- **Held-back dev tools:** ESLint stays at 9 (the React, jsx-a11y and import plugins don't support 10). TypeScript stays at 5.9 (typescript-eslint needs TS < 6.1).
+- **Open questions for Luis:** the unused `switcher.switchTo` key, and a translated 404 page, which needs copy that doesn't exist yet.
+
 ## Commands
 npm, Node 24.
 - `npm run dev`: dev server (Turbopack) at http://localhost:3000
