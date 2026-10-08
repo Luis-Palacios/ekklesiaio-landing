@@ -50,6 +50,14 @@ export function CheckIcon(props: IconProps) {
   );
 }
 
+export function SpinnerIcon(props: IconProps) {
+  return (
+    <Icon strokeWidth={2.5} {...props}>
+      <path d="M21 12a9 9 0 1 1-6.2-8.56" />
+    </Icon>
+  );
+}
+
 export function BellIcon(props: IconProps) {
   return (
     <Icon {...props}>
