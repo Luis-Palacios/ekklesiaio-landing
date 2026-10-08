@@ -236,8 +236,8 @@ EMAIL_FROM="ekklesiaio <hello@ekklesiaio.com>"
 CONTACT_EMAIL=hello@ekklesiaio.com
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
-UPSTASH_REDIS_REST_URL=
-UPSTASH_REDIS_REST_TOKEN=
+KV_REST_API_URL=                   # Upstash Redis (Vercel Marketplace sets it)
+KV_REST_API_TOKEN=
 ```
 Commit a `.env.example`. Never commit real values.
 

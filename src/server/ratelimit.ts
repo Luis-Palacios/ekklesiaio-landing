@@ -6,17 +6,18 @@ let limiter: Ratelimit | null | undefined;
 
 function getLimiter() {
   if (limiter !== undefined) return limiter;
-  // Redis.fromEnv reads UPSTASH_REDIS_REST_* or the KV_REST_API_* names the Vercel integration sets.
-  const configured =
-    (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) ||
-    (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
-  limiter = configured
-    ? new Ratelimit({
-        redis: Redis.fromEnv(),
-        limiter: Ratelimit.slidingWindow(5, "10 m"),
-        prefix: "ratelimit:waitlist",
-      })
-    : null;
+  // The Vercel Upstash integration sets KV_REST_API_*. Passed explicitly: Upstash's docs only
+  // document UPSTASH_REDIS_REST_* for Redis.fromEnv(), which would also take precedence.
+  const url = process.env.KV_REST_API_URL;
+  const token = process.env.KV_REST_API_TOKEN;
+  limiter =
+    url && token
+      ? new Ratelimit({
+          redis: new Redis({ url, token }),
+          limiter: Ratelimit.slidingWindow(5, "10 m"),
+          prefix: "ratelimit:waitlist",
+        })
+      : null;
   return limiter;
 }
 
