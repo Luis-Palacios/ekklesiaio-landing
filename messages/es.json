@@ -4,7 +4,8 @@
     "features": "Funciones",
     "ai": "IA",
     "cta": "Unirme a la lista",
-    "langLabel": "Idioma"
+    "langLabel": "Idioma",
+    "primaryLabel": "[ES TODO] Primary"
   },
   "hero": {
     "badge": "Muy pronto",
@@ -170,7 +171,8 @@
   },
   "footer": {
     "privacy": "Política de privacidad",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "navLabel": "[ES TODO] Footer"
   },
   "meta": {
     "title": "ekklesiaio — Reportes de grupos pequeños para iglesias",
