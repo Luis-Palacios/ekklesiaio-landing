@@ -2,6 +2,19 @@
 @import "../../brand/theme.css";
 
 @layer base {
+  /* Keep anchor targets (#how-it-works…) clear of the sticky header, which wraps
+     to 3 rows (~173px) on phones, 2 rows (~117px) on tablets, 1 row (71px) above. */
+  html {
+    scroll-padding-top: 190px;
+
+    @media (width >= 48rem) {
+      scroll-padding-top: 134px;
+    }
+    @media (width >= 860px) {
+      scroll-padding-top: 88px;
+    }
+  }
+
   body {
     @apply bg-paper font-sans text-[17px] leading-[1.6] text-ink antialiased;
   }

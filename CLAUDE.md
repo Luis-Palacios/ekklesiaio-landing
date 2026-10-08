@@ -29,8 +29,9 @@ This folder already has files (docs, brand, messages, public/brand, icons), and 
 ## Progress (keep this current)
 - [x] **Step 1: Scaffold** (PR #1, merged)
 - [x] **Step 2: i18n** (branch `step-2-i18n`, PR #2)
-- [ ] **Step 3: Static page** ← next. Header, every section, footer, both illustrations, logo components. Match the design at 1440px and 390px.
-- [ ] Step 4: Waitlist · [ ] Step 5: Email · [ ] Step 6: Polish
+- [x] **Step 3: Static page** (branch `step-3-static-page`)
+- [ ] **Step 4: Waitlist** ← next. Turn `src/components/waitlist-form.tsx` (currently an idle visual shell with no `name` on the input) into the client form with the server action and states.
+- [ ] Step 5: Email · [ ] Step 6: Polish
 
 ## Decisions and gotchas so far
 - **Next 16.4:** the middleware file is `src/proxy.ts` (renamed from `middleware.ts` in Next 16; DESIGN.md §2 predates this). `cacheComponents` and `partialPrefetching` are on (create-next-app defaults).
@@ -41,7 +42,11 @@ This folder already has files (docs, brand, messages, public/brand, icons), and 
 - **Language names:** "English"/"Español" (autonyms) live in `localeNames` in `src/i18n/routing.ts`, not in the message files.
 - **`npm audit`:** 5 "high" findings are one advisory in `braces` (GHSA-vfj7-8cjw-p6xm), reached only through the ESLint config. There's no patched release, and `npm audit --omit=dev` is clean. Don't run `npm audit fix --force`, because it downgrades `eslint-config-next` to 14. Recheck when `braces` ships a fix.
 - **Held-back dev tools:** ESLint stays at 9 (the React, jsx-a11y and import plugins don't support 10). TypeScript stays at 5.9 (typescript-eslint needs TS < 6.1).
-- **Open questions for Luis:** the unused `switcher.switchTo` key, and a translated 404 page, which needs copy that doesn't exist yet.
+- **Page structure:** sections live in `src/components/sections/`, and shared eyebrow/h2/container styles in `src/components/typography.tsx`. `line-subtle` (`#EEF0F3`, card dividers) was added to `brand/theme.css`. The sample leader names in `reports-card.tsx` are constants, not message keys.
+- **Sticky header offset:** `scroll-padding-top` in `globals.css` steps with the header's wrap points (3 rows < 768px, 2 rows < 860px). Recheck if nav copy changes. Write it as plain `@media` CSS: Prettier reorders `@apply` variants, and Tailwind then emits `min-[860px]` before `md`, which breaks the cascade.
+- **Build-time env:** `/en` and `/es` are prerendered, so the footer reads `CONTACT_EMAIL` at build time. Without it, the Contact link is omitted.
+- **Year:** `new Date()` breaks prerendering under `cacheComponents`. The footer reads it in a `"use cache"` helper with `cacheLife("days")`.
+- **Open questions for Luis:** the unused `switcher.switchTo` key; a translated 404 page, which needs copy that doesn't exist yet; the Spanish text for `nav.primaryLabel` / `footer.navLabel` (currently `[ES TODO]`).
 
 ## Commands
 npm, Node 24.

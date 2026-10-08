@@ -4,7 +4,8 @@
     "features": "Features",
     "ai": "AI insights",
     "cta": "Join the waitlist",
-    "langLabel": "Language"
+    "langLabel": "Language",
+    "primaryLabel": "Primary"
   },
   "hero": {
     "badge": "Coming soon",
@@ -170,7 +171,8 @@
   },
   "footer": {
     "privacy": "Privacy policy",
-    "contact": "Contact"
+    "contact": "Contact",
+    "navLabel": "Footer"
   },
   "meta": {
     "title": "ekklesiaio — Small-group reporting for churches",

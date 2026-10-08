@@ -34,6 +34,7 @@
   --color-on-dark:  #C3CDDA; /* body text on navy-900 */
   --color-line:     #E2E5EA; /* borders, dividers */
   --color-line-strong: #D5DBE3;
+  --color-line-subtle: #EEF0F3; /* dividers and tracks inside cards */
   --color-field:    #C9D0DA; /* input border at rest */
   --color-paper:    #FBFAF7; /* page background (warm off-white) */
   --color-surface:  #FFFFFF; /* cards, white sections */
