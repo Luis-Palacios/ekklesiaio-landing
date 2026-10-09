@@ -1,5 +1,5 @@
 import "server-only";
-import { and, eq, isNull, lt, or } from "drizzle-orm";
+import { and, eq, gt, isNull, lt, or } from "drizzle-orm";
 import type { Locale } from "next-intl";
 import type { WaitlistSource } from "@/lib/waitlist-schema";
 import { getDb } from "./db/client";
@@ -77,4 +77,64 @@ export async function resetConfirmSentAt(id: string, value: Date | null): Promis
     .update(waitlistSignups)
     .set({ confirmSentAt: value })
     .where(eq(waitlistSignups.id, id));
+}
+
+/**
+ * Confirms the pending signup holding this token hash, if its email went out after
+ * `sentAfter` (the expiry cutoff). Returns true if a row was confirmed. The hash is
+ * kept, so a second click on the same link can still be recognized.
+ */
+export async function confirmPending(args: {
+  confirmTokenHash: string;
+  sentAfter: Date;
+  now: Date;
+}): Promise<boolean> {
+  const t = waitlistSignups;
+  const rows = await getDb()
+    .update(t)
+    .set({ status: "confirmed", confirmedAt: args.now, updatedAt: args.now })
+    .where(
+      and(
+        eq(t.confirmTokenHash, args.confirmTokenHash),
+        eq(t.status, "pending"),
+        gt(t.confirmSentAt, args.sentAfter),
+      ),
+    )
+    .returning({ id: t.id });
+  return rows.length > 0;
+}
+
+export async function findStatusByConfirmHash(
+  confirmTokenHash: string,
+): Promise<WaitlistSignup["status"] | undefined> {
+  const [row] = await getDb()
+    .select({ status: waitlistSignups.status })
+    .from(waitlistSignups)
+    .where(eq(waitlistSignups.confirmTokenHash, confirmTokenHash))
+    .limit(1);
+  return row?.status;
+}
+
+export async function findStatusByUnsubscribeToken(
+  unsubscribeToken: string,
+): Promise<WaitlistSignup["status"] | undefined> {
+  const [row] = await getDb()
+    .select({ status: waitlistSignups.status })
+    .from(waitlistSignups)
+    .where(eq(waitlistSignups.unsubscribeToken, unsubscribeToken))
+    .limit(1);
+  return row?.status;
+}
+
+/**
+ * Marks the signup unsubscribed and drops its confirm token, so an old confirm link
+ * can't re-subscribe it. Idempotent. Returns false if no signup has this token.
+ */
+export async function unsubscribeByToken(unsubscribeToken: string, now: Date): Promise<boolean> {
+  const rows = await getDb()
+    .update(waitlistSignups)
+    .set({ status: "unsubscribed", confirmTokenHash: null, updatedAt: now })
+    .where(eq(waitlistSignups.unsubscribeToken, unsubscribeToken))
+    .returning({ id: waitlistSignups.id });
+  return rows.length > 0;
 }
