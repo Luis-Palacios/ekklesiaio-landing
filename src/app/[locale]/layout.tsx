@@ -20,6 +20,14 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     metadataBase: getSiteUrl(),
     title: t("title"),
     description: t("description"),
+    // Images come from opengraph-image.tsx (Next also emits them as twitter:image).
+    openGraph: {
+      type: "website",
+      siteName: "ekklesiaio",
+      title: t("title"),
+      description: t("description"),
+    },
+    twitter: { card: "summary_large_image" },
   };
 }
 

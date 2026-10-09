@@ -10,13 +10,23 @@ const variantColor: Record<Variant, string> = {
   dark: "text-white",
 };
 
-function MarkPaths() {
+/**
+ * The mark's shapes, drawn in a 0–80 box. `color` defaults to currentColor; the cross is
+ * gold unless `crossColor` is given. Pass both as hex where CSS isn't available (next/og).
+ */
+export function MarkPaths({
+  color = "currentColor",
+  crossColor,
+}: {
+  color?: string;
+  crossColor?: string;
+}) {
   return (
     <>
       <path
         d="M22 42V27c0-4 2-7 5-9l13-9 13 9c3 2 5 5 5 9v15"
         fill="none"
-        stroke="currentColor"
+        stroke={color}
         strokeWidth={5.5}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -24,25 +34,25 @@ function MarkPaths() {
       <path
         d="M40 7v16M34 15h12"
         fill="none"
-        className="stroke-gold-500"
+        {...(crossColor ? { stroke: crossColor } : { className: "stroke-gold-500" })}
         strokeWidth={5.5}
         strokeLinecap="round"
       />
-      <circle cx="40" cy="30" r="4.2" fill="currentColor" />
-      <circle cx="29" cy="32" r="3.2" fill="currentColor" />
-      <circle cx="51" cy="32" r="3.2" fill="currentColor" />
-      <path d="M32 48c0-7 3.3-11 8-11s8 4 8 11" fill="currentColor" />
+      <circle cx="40" cy="30" r="4.2" fill={color} />
+      <circle cx="29" cy="32" r="3.2" fill={color} />
+      <circle cx="51" cy="32" r="3.2" fill={color} />
+      <path d="M32 48c0-7 3.3-11 8-11s8 4 8 11" fill={color} />
       <path
         d="M23 47c0-5 2.3-8 6-8 2.2 0 3.8 1.1 4.8 3.1"
         fill="none"
-        stroke="currentColor"
+        stroke={color}
         strokeWidth={4.5}
         strokeLinecap="round"
       />
       <path
         d="M57 47c0-5-2.3-8-6-8-2.2 0-3.8 1.1-4.8 3.1"
         fill="none"
-        stroke="currentColor"
+        stroke={color}
         strokeWidth={4.5}
         strokeLinecap="round"
       />

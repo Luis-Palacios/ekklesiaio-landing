@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
@@ -9,8 +9,9 @@ export const contentType = "image/png";
 // rounded icon is drawn on a square of brand navy (navy-900 in brand/theme.css).
 const NAVY_900 = "#0B2341";
 
-export default async function AppleIcon() {
-  const svg = await readFile(join(process.cwd(), "public/brand/icon.svg"), "utf8");
+// A sync read keeps the icon prerendered (async file IO opts out under cacheComponents).
+export default function AppleIcon() {
+  const svg = readFileSync(join(process.cwd(), "public/brand/icon.svg"), "utf8");
   const src = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
 
   return new ImageResponse(
