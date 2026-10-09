@@ -209,10 +209,156 @@
   },
   "privacy": {
     "title": "Política de privacidad",
-    "draftNotice": "[BORRADOR — Luis debe revisarlo antes del lanzamiento]",
-    "reviewMarker": "[Luis debe revisarlo]",
-    "turnstileHeading": "Protección contra el spam",
-    "turnstileBody": "Para proteger el formulario de la lista de espera contra el spam y el abuso, este sitio usa Cloudflare Turnstile. La información que recopila Turnstile se trata según lo descrito en el <link>Anexo de privacidad de Turnstile de Cloudflare</link> (en inglés)."
+    "effectiveDate": "<b>Fecha de vigencia:</b> 9 de octubre de 2026",
+    "who": {
+      "heading": "Quiénes somos",
+      "body": [
+        "ekklesiaio es operado por Luis Palacios, con sede en Managua, Nicaragua (“nosotros”). Esta política explica qué información recopilamos en <b>ekklesiaio.com</b> mientras ekklesiaio está en etapa de prelanzamiento y qué hacemos con ella.",
+        "Por ahora, el sitio hace una sola cosa con información personal: mantiene una lista de espera de personas que quieren saber cuándo se lanza ekklesiaio. El producto ekklesiaio tendrá su propia política de privacidad cuando abra."
+      ]
+    },
+    "collect": {
+      "heading": "Información que recopilamos",
+      "intro": "Solo recopilamos lo que la lista de espera necesita. No le pedimos su nombre, su iglesia ni ningún otro dato.",
+      "columns": ["Qué", "Cuándo", "Para qué"],
+      "rows": [
+        [
+          "Su correo electrónico",
+          "Al unirse a la lista de espera",
+          "Para confirmar su registro y avisarle cuando lancemos"
+        ],
+        [
+          "Su idioma (inglés o español)",
+          "Al unirse a la lista de espera",
+          "Para escribirle en su idioma"
+        ],
+        [
+          "Qué formulario usó (arriba o abajo de la página)",
+          "Al unirse a la lista de espera",
+          "Para entender qué parte de la página funciona"
+        ],
+        [
+          "Fechas de registro, confirmación y cancelación",
+          "Cuando ocurren",
+          "Para la doble confirmación y para respetar las cancelaciones"
+        ],
+        [
+          "En qué enlaces de nuestros correos hace clic",
+          "Al hacer clic en un enlace de un correo",
+          "Para saber qué novedades son útiles. No rastreamos si abre nuestros correos."
+        ],
+        [
+          "Su dirección IP",
+          "En cada intento de registro",
+          "Para limitar intentos repetidos y bloquear abusos. Se guarda unos 10 minutos y no se almacena con su registro."
+        ],
+        [
+          "Señales del dispositivo y del navegador",
+          "En cada intento de registro",
+          "Cloudflare Turnstile las usa para distinguir personas de bots (vea Proveedores de servicios)"
+        ],
+        [
+          "Estadísticas anónimas de visitas",
+          "Al visitar el sitio",
+          "Para saber cuántas personas nos visitan, sin identificarle (vea Cookies)"
+        ]
+      ]
+    },
+    "use": {
+      "heading": "Cómo la usamos",
+      "intro": "Usamos su correo solo para enviarle un correo de confirmación y, una vez que confirme, novedades sobre el lanzamiento de ekklesiaio. Se los enviamos porque usted los pidió, y puede dejar de recibirlos en cualquier momento.",
+      "items": [
+        "<b>Nunca vendemos ni alquilamos su información</b>, y no la compartimos con anunciantes.",
+        "<b>No usamos su información para entrenar modelos de IA.</b>",
+        "<b>No rastreamos si abre nuestros correos.</b> Sí contamos en qué enlaces de nuestros correos se hace clic, para saber qué contenido es útil.",
+        "Usamos las direcciones IP y las señales del dispositivo solo para proteger el formulario de bots y abusos.",
+        "Las estadísticas anónimas de visitas nos ayudan a mejorar el sitio. No le identifican."
+      ]
+    },
+    "providers": {
+      "heading": "Proveedores de servicios",
+      "intro": "Usamos algunas empresas de confianza para operar el sitio. Procesan información solo para prestarnos su servicio.",
+      "columns": ["Proveedor", "Qué hace por nosotros", "Su política de privacidad"],
+      "rows": [
+        [
+          "Vercel",
+          "Aloja el sitio web; estadísticas anónimas de visitas",
+          "<vercel>Vercel Privacy Notice</vercel>"
+        ],
+        [
+          "Neon (una empresa de Databricks)",
+          "Almacena la base de datos de la lista de espera",
+          "<databricks>Databricks Privacy Notice</databricks>"
+        ],
+        [
+          "Upstash",
+          "Guarda brevemente direcciones IP para limitar intentos de registro repetidos",
+          "<upstash>Upstash Privacy Policy</upstash>"
+        ],
+        [
+          "Resend",
+          "Envía nuestros correos y cuenta los clics en sus enlaces",
+          "<resend>Resend Privacy Policy</resend>"
+        ],
+        [
+          "Cloudflare Turnstile",
+          "Verifica que los registros vengan de personas, no de bots",
+          "<turnstile>Turnstile Privacy Addendum</turnstile>"
+        ]
+      ],
+      "turnstile": "<b>Sobre Cloudflare Turnstile.</b> Nuestro formulario de registro usa Turnstile en modo invisible. Turnstile recopila señales como su dirección IP, el agente de usuario del navegador y detalles de la conexión para distinguir personas de bots. El uso que Cloudflare hace de esta información se describe en su <turnstile>Turnstile Privacy Addendum</turnstile> (en inglés)."
+    },
+    "storage": {
+      "heading": "Dónde se almacena su información",
+      "body": "Nuestra lista de espera y los sistemas de nuestros proveedores se encuentran en los <b>Estados Unidos</b> (Virginia del Norte). Si usted vive en otro país, su información se transfiere y se procesa en los Estados Unidos. Nuestros proveedores la protegen con cifrado en tránsito y en reposo."
+    },
+    "retention": {
+      "heading": "Cuánto tiempo la conservamos",
+      "columns": ["Información", "Cuánto tiempo"],
+      "rows": [
+        [
+          "Registros confirmados",
+          "Hasta que ekklesiaio se lance y le hayamos avisado, o hasta que cancele su suscripción o nos pida eliminarlos"
+        ],
+        ["Registros nunca confirmados", "Se eliminan a los 30 días"],
+        [
+          "Después de cancelar su suscripción",
+          "Solo conservamos lo necesario para asegurarnos de no volver a escribirle (su correo, su idioma y las fechas correspondientes). Si nos lo pide, también los eliminamos."
+        ],
+        ["Direcciones IP para limitar intentos", "Unos 10 minutos"]
+      ]
+    },
+    "rights": {
+      "heading": "Sus opciones y derechos",
+      "intro": "Usted tiene el control de su información.",
+      "items": [
+        "<b>Cancele su suscripción</b> con el enlace que aparece en cualquiera de nuestros correos. Se aplica de inmediato.",
+        "<b>Consulte, corrija o elimine</b> su información escribiendo a <email>hello@ekklesiaio.com</email>. Le responderemos en un plazo de 30 días.",
+        "<b>Retire su consentimiento</b> en cualquier momento. Esto no afecta los correos ya enviados."
+      ],
+      "outro": "Según dónde viva, puede tener más derechos bajo la ley local, como el RGPD en Europa. También puede presentar una queja ante la autoridad de protección de datos de su país. Atenderemos cualquiera de estas solicitudes sin importar dónde viva."
+    },
+    "cookies": {
+      "heading": "Cookies",
+      "intro": "Usamos una sola cookie y ninguna cookie de publicidad o rastreo.",
+      "columns": ["Cookie", "Qué hace", "Duración"],
+      "rows": [
+        ["<code>NEXT_LOCALE</code>", "Recuerda el idioma que eligió (inglés o español)", "1 año"]
+      ],
+      "outro": "Nuestras estadísticas de visitas (Vercel Analytics) no usan cookies ni le identifican. Cloudflare Turnstile funciona en un marco separado dentro del formulario de registro; vea su política de privacidad (<turnstile>Turnstile Privacy Addendum</turnstile>)."
+    },
+    "children": {
+      "heading": "Menores de edad",
+      "body": "ekklesiaio está pensado para el personal y los líderes de iglesias. La lista de espera no está dirigida a menores de 16 años, y no recopilamos su información a sabiendas. Si cree que un menor se registró, contáctenos y la eliminaremos."
+    },
+    "changes": {
+      "heading": "Cambios a esta política",
+      "body": "Si cambiamos esta política, actualizaremos la fecha de vigencia indicada arriba. Si un cambio afecta cómo usamos su correo, se lo avisaremos por correo antes de que entre en vigor."
+    },
+    "contact": {
+      "heading": "Contacto",
+      "body": "Preguntas o solicitudes sobre su privacidad: <b><email>hello@ekklesiaio.com</email></b>."
+    }
   },
   "switcher": {
     "switchTo": "View in English"
