@@ -123,7 +123,7 @@ Every string below comes from `messages/*.json` (key in brackets). Visual detail
 6. **AI-assisted insights** (`#ai-insights`, navy-50 section): eyebrow, H2 with an italic tail, intro, 4 items (2×2), then a **trust list** of 3 items (optional / leaders decide / privacy) with gold-800 icons. Right column: `InsightsCard` illustration.
 7. **Philosophy**: H2 with an italic tail + two paragraphs; then the Mission and Vision panels (Newsreader quote text).
 8. **Closing CTA** (navy): white logo mark, H2 with a gold italic tail, body, **WaitlistForm** (variant dark, source `cta`, button `form.ctaButton`).
-9. **Footer** (navy-950): wordmark (HTML text in Inter), © year, links [`footer.privacy` → `/[locale]/privacy`, `footer.contact` → `mailto:` the `CONTACT_EMAIL` env var].
+9. **Footer** (navy-950): wordmark (HTML text in Inter), © year, links [`footer.privacy` → `/[locale]/privacy`, `footer.contact` → `mailto:` the `CONTACT_EMAIL` env var], then icon-only links to the Facebook, X and LinkedIn profiles (URLs in `src/lib/social.ts`; `aria-label` from `footer.social.*`; 20px glyph in a 44×44 hit area; new tab, `rel="me noopener noreferrer"`).
 
 The two illustrations are **static decorative mockups** with sample data (`role="img"` + `aria-label`). Their text is translated (keys `mock.*`, `card.*`, `groups.*`). Don't make them interactive.
 

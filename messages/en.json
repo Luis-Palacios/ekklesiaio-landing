@@ -172,7 +172,12 @@
   "footer": {
     "privacy": "Privacy policy",
     "contact": "Contact",
-    "navLabel": "Footer"
+    "navLabel": "Footer",
+    "social": {
+      "facebook": "ekklesiaio on Facebook",
+      "x": "ekklesiaio on X",
+      "linkedin": "ekklesiaio on LinkedIn"
+    }
   },
   "meta": {
     "title": "ekklesiaio — Small-group reporting for churches",
