@@ -176,7 +176,7 @@ waitlist_signups (
 ```
 
 ### 5.4 Double opt-in
-- Email (React Email, `server/email/confirm-email.tsx`), in the **signup's locale**, using the `email.*` keys. It's simple and on-brand: logo, heading, body, a navy button linking to `https://ekklesiaio.com/{locale}/confirm?token=…`, the ignore note, and an unsubscribe link. From: the `EMAIL_FROM` env var (e.g. `ekklesiaio <hello@ekklesiaio.com>`). Include a `List-Unsubscribe` header.
+- Email (React Email, `server/email/confirm-email.tsx`), in the **signup's locale**, using the `email.*` keys. It's simple and on-brand: logo, heading, body, a navy button linking to `https://ekklesiaio.com/{locale}/confirm?token=…`, the ignore note, and an unsubscribe link. From: `EMAIL_FROM_NAME <EMAIL_FROM>` (e.g. `ekklesiaio` and `hello@ekklesiaio.com`; the name is optional). Include a `List-Unsubscribe` header.
 - Tokens expire after **72 hours**.
 - `/[locale]/confirm`: opening the link changes nothing; a valid token shows a "Confirm my email" button whose POST marks it `confirmed` and shows `confirm.title` / `confirm.body` (an already-confirmed link shows that too). Invalid or expired → `confirm.invalidTitle` / `confirm.invalidBody` with a link back to `/#waitlist`. Same visual shell as the landing page (header + a centered card on paper + footer).
 - `/[locale]/unsubscribe?token=…` → set `unsubscribed` and show `unsubscribe.*`.
@@ -243,7 +243,8 @@ NEXT_PUBLIC_SITE_URL=https://ekklesiaio.com
 DATABASE_URL=                      # Neon, pooled (Vercel Marketplace sets it)
 DATABASE_URL_UNPOOLED=             # Neon, direct; used by build-time migrations (§5.5)
 RESEND_API_KEY=
-EMAIL_FROM="ekklesiaio <hello@ekklesiaio.com>"
+EMAIL_FROM=hello@ekklesiaio.com
+EMAIL_FROM_NAME=ekklesiaio
 CONTACT_EMAIL=hello@ekklesiaio.com
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=

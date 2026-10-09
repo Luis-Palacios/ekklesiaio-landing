@@ -33,6 +33,18 @@ export function emailLinks(locale: Locale, confirmToken: string, unsubscribeToke
 }
 
 /**
+ * The From header: `Name <address>` from EMAIL_FROM_NAME and EMAIL_FROM, or just the
+ * address without a name. Whitespace in the name (including pasted non-breaking
+ * spaces, which Resend rejects) collapses to plain spaces.
+ */
+export function formatFrom(address: string | undefined, name: string | undefined) {
+  const email = address?.trim();
+  if (!email) return undefined;
+  const display = name?.replace(/\s+/gu, " ").trim();
+  return display ? `${display} <${email}>` : email;
+}
+
+/**
  * Sends the double opt-in email through Resend, in the signup's locale. Throws on
  * failure; the waitlist action turns that into the form's error state.
  * Without RESEND_API_KEY / EMAIL_FROM: dev logs the confirm link, production throws.
@@ -45,7 +57,7 @@ export async function sendConfirmationEmail({
 }: ConfirmationEmail) {
   const links = emailLinks(locale, confirmToken, unsubscribeToken);
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.EMAIL_FROM;
+  const from = formatFrom(process.env.EMAIL_FROM, process.env.EMAIL_FROM_NAME);
 
   if (!apiKey || !from) {
     if (process.env.NODE_ENV === "production") {
