@@ -38,20 +38,20 @@ It's a small site, but it's built like a production app. That means a double opt
 
 ## Tech stack
 
-| Concern | Choice |
-| --- | --- |
-| Framework | [Next.js 16](https://nextjs.org) (App Router, Server Components, Server Actions, `cacheComponents`) |
-| Language | TypeScript (strict) |
-| Styling | [Tailwind CSS v4](https://tailwindcss.com) with design tokens |
-| i18n | [next-intl](https://next-intl.dev) |
-| Database | [Neon](https://neon.tech) Postgres + [Drizzle ORM](https://orm.drizzle.team) |
-| Email | [Resend](https://resend.com) + [React Email](https://react.email) |
-| Bot protection | [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) |
-| Rate limiting | [Upstash Redis](https://upstash.com) + `@upstash/ratelimit` |
-| Validation | [zod](https://zod.dev) (`zod/mini`) |
-| Analytics | [Vercel Web Analytics](https://vercel.com/analytics) (cookieless) |
-| Testing | [Vitest](https://vitest.dev) |
-| Hosting | [Vercel](https://vercel.com), DNS on Cloudflare |
+| Concern        | Choice                                                                                              |
+| -------------- | --------------------------------------------------------------------------------------------------- |
+| Framework      | [Next.js 16](https://nextjs.org) (App Router, Server Components, Server Actions, `cacheComponents`) |
+| Language       | TypeScript (strict)                                                                                 |
+| Styling        | [Tailwind CSS v4](https://tailwindcss.com) with design tokens                                       |
+| i18n           | [next-intl](https://next-intl.dev)                                                                  |
+| Database       | [Neon](https://neon.tech) Postgres + [Drizzle ORM](https://orm.drizzle.team)                        |
+| Email          | [Resend](https://resend.com) + [React Email](https://react.email)                                   |
+| Bot protection | [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/)                              |
+| Rate limiting  | [Upstash Redis](https://upstash.com) + `@upstash/ratelimit`                                         |
+| Validation     | [zod](https://zod.dev) (`zod/mini`)                                                                 |
+| Analytics      | [Vercel Web Analytics](https://vercel.com/analytics) (cookieless)                                   |
+| Testing        | [Vitest](https://vitest.dev)                                                                        |
+| Hosting        | [Vercel](https://vercel.com), DNS on Cloudflare                                                     |
 
 ## How the waitlist works
 
@@ -113,7 +113,7 @@ docs/                           # build spec, approved design references, privac
 - **Node.js 24** (see `engines` in `package.json`)
 - **npm**
 - A **Postgres** database. A free [Neon](https://neon.tech) branch works well.
-- *Optional:* a [Resend](https://resend.com) API key. Without one, the confirmation link is printed to the dev server console instead of emailed.
+- _Optional:_ a [Resend](https://resend.com) API key. Without one, the confirmation link is printed to the dev server console instead of emailed.
 
 You don't need Cloudflare or Upstash accounts for local development: Turnstile has public test keys, and the rate limit is skipped when Upstash isn't configured.
 
@@ -145,19 +145,19 @@ TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
 <details>
 <summary><b>All environment variables</b></summary>
 
-| Variable | Required | Purpose |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Yes | Canonical origin for metadata, sitemap and email links |
-| `DATABASE_URL` | Yes | Neon pooled connection string |
-| `DATABASE_URL_UNPOOLED` | Vercel only | Direct connection used for build-time migrations |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Yes | Turnstile site key |
-| `TURNSTILE_SECRET_KEY` | Yes | Turnstile secret. Sign-ups fail without it. |
-| `RESEND_API_KEY` | Production | Sends confirmation emails |
-| `EMAIL_FROM` | Production | Sender address (bare address only) |
-| `EMAIL_FROM_NAME` | No | Sender display name |
-| `CONTACT_EMAIL` | No | Footer contact link (read at build time) |
-| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Production | Upstash Redis for rate limiting |
-| `CRON_SECRET` | Production | Authorizes the daily retention cron |
+| Variable                                | Required    | Purpose                                                |
+| --------------------------------------- | ----------- | ------------------------------------------------------ |
+| `NEXT_PUBLIC_SITE_URL`                  | Yes         | Canonical origin for metadata, sitemap and email links |
+| `DATABASE_URL`                          | Yes         | Neon pooled connection string                          |
+| `DATABASE_URL_UNPOOLED`                 | Vercel only | Direct connection used for build-time migrations       |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`        | Yes         | Turnstile site key                                     |
+| `TURNSTILE_SECRET_KEY`                  | Yes         | Turnstile secret. Sign-ups fail without it.            |
+| `RESEND_API_KEY`                        | Production  | Sends confirmation emails                              |
+| `EMAIL_FROM`                            | Production  | Sender address (bare address only)                     |
+| `EMAIL_FROM_NAME`                       | No          | Sender display name                                    |
+| `CONTACT_EMAIL`                         | No          | Footer contact link (read at build time)               |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Production  | Upstash Redis for rate limiting                        |
+| `CRON_SECRET`                           | Production  | Authorizes the daily retention cron                    |
 
 </details>
 
@@ -177,17 +177,17 @@ Open [http://localhost:3000](http://localhost:3000). You'll be redirected to `/e
 
 ## Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the dev server (Turbopack) |
-| `npm run build` / `npm start` | Production build and serve |
-| `npm test` | Run the Vitest unit tests |
-| `npm run lint` | ESLint (Next core-web-vitals + TypeScript + Prettier) |
-| `npm run typecheck` | Generate route types and run `tsc --noEmit` |
-| `npm run check:messages` | Make sure `en.json` and `es.json` have identical keys |
-| `npm run format` | Format with Prettier (with Tailwind class sorting) |
-| `npm run db:generate` | Generate a migration from the Drizzle schema |
-| `npm run db:migrate` | Apply migrations to the database in `DATABASE_URL` |
+| Command                       | Description                                           |
+| ----------------------------- | ----------------------------------------------------- |
+| `npm run dev`                 | Start the dev server (Turbopack)                      |
+| `npm run build` / `npm start` | Production build and serve                            |
+| `npm test`                    | Run the Vitest unit tests                             |
+| `npm run lint`                | ESLint (Next core-web-vitals + TypeScript + Prettier) |
+| `npm run typecheck`           | Generate route types and run `tsc --noEmit`           |
+| `npm run check:messages`      | Make sure `en.json` and `es.json` have identical keys |
+| `npm run format`              | Format with Prettier (with Tailwind class sorting)    |
+| `npm run db:generate`         | Generate a migration from the Drizzle schema          |
+| `npm run db:migrate`          | Apply migrations to the database in `DATABASE_URL`    |
 
 ## Testing
 
