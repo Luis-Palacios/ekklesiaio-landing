@@ -1,6 +1,6 @@
 import { useLocale, useTranslations } from "next-intl";
 import { LanguageSwitcher } from "./language-switcher";
-import { Logo } from "./logo";
+import { Logo, LogoMark } from "./logo";
 
 const navLinks = [
   { href: "#how-it-works", key: "how" },
@@ -22,18 +22,27 @@ export function SiteHeader() {
           aria-label="ekklesiaio"
           className="flex items-center rounded-control outline-none focus-visible:shadow-focus"
         >
-          <Logo />
+          {/* The wordmark doesn't fit beside the switcher and CTA on phones. */}
+          {/* viewBox cropped to the mark's ink so it reads at the lockup's height. */}
+          <LogoMark viewBox="28 13 44 46" width={33} height={34} className="sm:hidden" />
+          <Logo className="hidden sm:block" />
         </a>
-        <nav aria-label={t("primaryLabel")} className="flex flex-wrap items-center gap-x-6 gap-y-3">
-          {navLinks.map(({ href, key }) => (
-            <a
-              key={key}
-              href={`${home}${href}`}
-              className="rounded-sm text-[15px] font-medium text-ink no-underline outline-none hover:text-navy-900 focus-visible:shadow-focus"
-            >
-              {t(key)}
-            </a>
-          ))}
+        <nav
+          aria-label={t("primaryLabel")}
+          className="flex flex-wrap items-center gap-x-3 gap-y-3 md:gap-x-6"
+        >
+          {/* Section links are desktop-only; on phones the header is one row. */}
+          <div className="hidden items-center gap-x-6 md:flex">
+            {navLinks.map(({ href, key }) => (
+              <a
+                key={key}
+                href={`${home}${href}`}
+                className="rounded-sm text-[15px] font-medium text-ink no-underline outline-none hover:text-navy-900 focus-visible:shadow-focus"
+              >
+                {t(key)}
+              </a>
+            ))}
+          </div>
           <LanguageSwitcher />
           <a
             href={`${home}#waitlist`}

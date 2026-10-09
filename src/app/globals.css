@@ -2,16 +2,13 @@
 @import "../../brand/theme.css";
 
 @layer base {
-  /* Keep anchor targets (#how-it-works…) clear of the sticky header, which wraps
-     to 3 rows (~173px) on phones, 2 rows (~117px) on tablets, 1 row (71px) above. */
+  /* Keep anchor targets (#how-it-works…) clear of the sticky header: 1 row (~71px)
+     on phones (section links hidden), 2 rows (~117px) from md until 860px, 1 row above. */
   html {
-    scroll-padding-top: 190px;
+    scroll-padding-top: 88px;
 
-    @media (width >= 48rem) {
+    @media (width >= 48rem) and (width < 860px) {
       scroll-padding-top: 134px;
-    }
-    @media (width >= 860px) {
-      scroll-padding-top: 88px;
     }
   }
 

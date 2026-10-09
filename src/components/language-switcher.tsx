@@ -10,9 +10,9 @@ export function LanguageSwitcher() {
     <div
       role="group"
       aria-label={t("langLabel")}
-      className="inline-flex items-center gap-0.5 rounded-control border border-line-strong bg-surface py-[3px] pr-[3px] pl-2.5"
+      className="inline-flex items-center gap-0.5 rounded-control border border-line-strong bg-surface p-[3px] sm:pl-2.5"
     >
-      <GlobeIcon className="mr-1 size-4 text-muted" />
+      <GlobeIcon className="mr-1 hidden size-4 text-muted sm:block" />
       <LocaleLinks locales={routing.locales} />
     </div>
   );
