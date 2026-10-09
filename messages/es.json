@@ -184,7 +184,8 @@
     "body": "¡Gracias! Le escribiremos en cuanto ekklesiaio esté listo.",
     "invalidTitle": "Este enlace expiró o no es válido.",
     "invalidBody": "Vuelva a unirse a la lista de espera y le enviaremos un nuevo correo de confirmación.",
-    "back": "Volver a ekklesiaio"
+    "back": "Volver a ekklesiaio",
+    "loading": "[ES TODO] Confirming…"
   },
   "unsubscribe": {
     "promptTitle": "[ES TODO] Unsubscribe from ekklesiaio emails?",

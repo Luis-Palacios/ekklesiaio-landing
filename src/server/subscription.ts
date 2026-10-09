@@ -2,7 +2,7 @@ import "server-only";
 import { hashToken, isToken } from "./tokens";
 import {
   confirmPending,
-  findStatusByConfirmHash,
+  findByConfirmHash,
   findStatusByUnsubscribeToken,
   unsubscribeByToken,
 } from "./waitlist-repo";
@@ -26,7 +26,22 @@ export async function confirmSubscription(token: unknown, now = new Date()): Pro
   });
   if (confirmed) return true;
 
-  return (await findStatusByConfirmHash(confirmTokenHash)) === "confirmed";
+  return (await findByConfirmHash(confirmTokenHash))?.status === "confirmed";
+}
+
+/**
+ * Read-only check for the confirm page: "valid" if the link can still confirm,
+ * "done" if it's already confirmed, "invalid" if it's unknown or expired.
+ */
+export async function checkConfirmToken(
+  token: unknown,
+  now = new Date(),
+): Promise<"valid" | "done" | "invalid"> {
+  if (!isToken(token)) return "invalid";
+  const signup = await findByConfirmHash(hashToken(token));
+  if (signup?.status === "confirmed") return "done";
+  if (signup?.status !== "pending" || !signup.confirmSentAt) return "invalid";
+  return signup.confirmSentAt.getTime() > now.getTime() - CONFIRM_TTL_MS ? "valid" : "invalid";
 }
 
 /** "valid" if the unsubscribe link belongs to a signup, "done" if it's already unsubscribed. */

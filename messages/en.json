@@ -184,7 +184,8 @@
     "body": "Thank you! We’ll email you as soon as ekklesiaio is ready.",
     "invalidTitle": "This link has expired or isn’t valid.",
     "invalidBody": "Join the waitlist again and we’ll send you a new confirmation email.",
-    "back": "Back to ekklesiaio"
+    "back": "Back to ekklesiaio",
+    "loading": "Confirming…"
   },
   "unsubscribe": {
     "promptTitle": "Unsubscribe from ekklesiaio emails?",
