@@ -6,7 +6,7 @@ import { BellIcon, CheckIcon } from "../icons";
 // the contents presentational; the aria-label describes it.
 
 // Sample proper names, the same in every locale.
-const leaders = { g1: "Daniel R.", g2: "Ana M.", g3: "Carlos P." } as const;
+const leaders = { g1: "Daniel R.", g2: "Luis P.", g3: "Carlos P." } as const;
 
 function Chip({ tone, children }: { tone: "navy" | "gold"; children: ReactNode }) {
   return (
