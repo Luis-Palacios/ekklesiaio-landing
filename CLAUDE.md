@@ -32,7 +32,7 @@ This folder already has files (docs, brand, messages, public/brand, icons), and 
 - [x] **Step 3: Static page** (branch `step-3-static-page`)
 - [x] **Step 4: Waitlist** (branch `step-4-waitlist`, PR #6). The migration is applied to the dev database; Vercel builds apply migrations from here on.
 - [x] **Step 5: Email** (branch `step-5-email`, PR #7)
-- [x] **Step 6: Polish** (branch `step-6-polish`): OG images, sitemap/robots, analytics, the approved privacy policy, the 30-day retention cron, Lighthouse pass. Playwright smoke tests are a follow-up.
+- [x] **Step 6: Polish** (branch `step-6-polish`, PR #10): OG images, sitemap/robots, analytics, the approved privacy policy, the 30-day retention cron, Lighthouse pass. Playwright smoke tests are a follow-up.
 
 ## Decisions and gotchas so far
 - **Next 16.4:** the middleware file is `src/proxy.ts` (renamed from `middleware.ts` in Next 16; DESIGN.md §2 predates this). `cacheComponents` and `partialPrefetching` are on (create-next-app defaults).
