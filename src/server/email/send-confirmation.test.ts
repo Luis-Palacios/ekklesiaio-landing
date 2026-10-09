@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { hashToken } from "../tokens";
-import { sendConfirmationEmail } from "./send-confirmation";
+import { formatFrom, sendConfirmationEmail } from "./send-confirmation";
 
 const send = vi.fn();
 vi.mock("resend", () => ({
@@ -20,7 +20,8 @@ beforeEach(() => {
   send.mockReset().mockResolvedValue({ data: { id: "email-1" }, error: null });
   vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://ekklesiaio.com");
   vi.stubEnv("RESEND_API_KEY", "re_test");
-  vi.stubEnv("EMAIL_FROM", "ekklesiaio <hello@ekklesiaio.com>");
+  vi.stubEnv("EMAIL_FROM", "hello@ekklesiaio.com");
+  vi.stubEnv("EMAIL_FROM_NAME", "ekklesiaio");
 });
 
 afterEach(() => {
@@ -77,5 +78,29 @@ describe("sendConfirmationEmail", () => {
 
     await expect(sendConfirmationEmail(email)).rejects.toThrow("RESEND_API_KEY");
     expect(send).not.toHaveBeenCalled();
+  });
+});
+
+describe("formatFrom", () => {
+  it("joins the name and address", () => {
+    expect(formatFrom("hello@ekklesiaio.com", "ekklesiaio")).toBe(
+      "ekklesiaio <hello@ekklesiaio.com>",
+    );
+  });
+
+  it("sends from the bare address without a name", () => {
+    expect(formatFrom(" hello@ekklesiaio.com ", undefined)).toBe("hello@ekklesiaio.com");
+    expect(formatFrom("hello@ekklesiaio.com", "  ")).toBe("hello@ekklesiaio.com");
+  });
+
+  it("normalizes pasted whitespace in the name", () => {
+    expect(formatFrom("hello@ekklesiaio.com", " Ekklesiaio\u00a0 Team\n")).toBe(
+      "Ekklesiaio Team <hello@ekklesiaio.com>",
+    );
+  });
+
+  it("is undefined without an address, even with a name", () => {
+    expect(formatFrom(undefined, "ekklesiaio")).toBeUndefined();
+    expect(formatFrom(" ", "ekklesiaio")).toBeUndefined();
   });
 });
