@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -40,6 +41,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       <body>
         {/* Client components get only the messages they need, passed per subtree. */}
         <NextIntlClientProvider messages={null}>{children}</NextIntlClientProvider>
+        {/* Cookieless page views; off in development. */}
+        <Analytics />
       </body>
     </html>
   );

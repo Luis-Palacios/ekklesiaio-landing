@@ -5,6 +5,8 @@ import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "reac
 // Cloudflare Turnstile, explicitly rendered. Placed inside a <form>, it adds a hidden
 // `cf-turnstile-response` input that the server action verifies. With
 // appearance "interaction-only" it stays invisible unless Cloudflare needs a click.
+// Nothing loads from Cloudflare until `load` is true: the form sets it on first use,
+// which keeps the challenge off the page-load critical path.
 
 const SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 
@@ -37,12 +39,14 @@ export type TurnstileHandle = {
 };
 
 type Props = {
+  /** Load the script and render the widget (from then on; it never unloads). */
+  load: boolean;
   theme: "light" | "dark";
   language: string;
   ref?: Ref<TurnstileHandle>;
 };
 
-export function TurnstileWidget({ theme, language, ref }: Props) {
+export function TurnstileWidget({ load, theme, language, ref }: Props) {
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | undefined>(undefined);
@@ -53,7 +57,7 @@ export function TurnstileWidget({ theme, language, ref }: Props) {
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!siteKey || !container) return;
+    if (!load || !siteKey || !container) return;
     let cancelled = false;
     let id: string | undefined;
 
@@ -90,7 +94,7 @@ export function TurnstileWidget({ theme, language, ref }: Props) {
       if (id) window.turnstile?.remove(id);
       widgetId.current = undefined;
     };
-  }, [siteKey, theme, language]);
+  }, [load, siteKey, theme, language]);
 
   useImperativeHandle(ref, () => ({
     // Tokens are single-use, so every submit that doesn't end in success needs a new one.
@@ -100,7 +104,8 @@ export function TurnstileWidget({ theme, language, ref }: Props) {
     },
     waitForToken(timeoutMs) {
       if (token.current) return Promise.resolve(token.current);
-      // No widget will ever issue one: don't make the person wait.
+      // No widget will ever issue one: don't make the person wait. (Before `load`, the
+      // wait covers the script load and the first challenge.)
       if (!siteKey || failed.current) return Promise.resolve(null);
 
       return new Promise((resolve) => {
