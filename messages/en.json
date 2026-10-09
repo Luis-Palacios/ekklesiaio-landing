@@ -187,6 +187,12 @@
     "back": "Back to ekklesiaio"
   },
   "unsubscribe": {
+    "promptTitle": "Unsubscribe from ekklesiaio emails?",
+    "promptBody": "We’ll stop sending you emails about ekklesiaio, including the launch announcement.",
+    "button": "Unsubscribe",
+    "loading": "Unsubscribing…",
+    "invalidTitle": "This unsubscribe link isn’t valid.",
+    "invalidBody": "Make sure you opened the full link from our email.",
     "title": "You’ve been removed from the list.",
     "body": "You won’t receive any more emails from us about ekklesiaio.",
     "back": "Back to ekklesiaio"

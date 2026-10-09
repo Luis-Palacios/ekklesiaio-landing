@@ -1,7 +1,14 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useActionState, useEffect, useRef, useState, type FormEvent } from "react";
+import {
+  startTransition,
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
 import { emailSchema, type WaitlistSource, type WaitlistState } from "@/lib/waitlist-schema";
 import { joinWaitlist } from "@/server/waitlist-action";
 import { CheckIcon, SpinnerIcon } from "./icons";
@@ -44,10 +51,17 @@ const styles = {
 
 const initialState: WaitlistState = { status: "idle" };
 
+// How long a submit waits for Turnstile to issue a token before sending without one
+// (the server then answers with the error state).
+const TOKEN_WAIT_MS = 5000;
+
 export function WaitlistFormClient({ variant, source }: Props) {
   const t = useTranslations("form");
   const locale = useLocale();
-  const [state, formAction, pending] = useActionState(joinWaitlist, initialState);
+  const [state, formAction, actionPending] = useActionState(joinWaitlist, initialState);
+  // True while a submit waits for the Turnstile token; shown like the action's pending state.
+  const [waiting, setWaiting] = useState(false);
+  const pending = actionPending || waiting;
   // Client-side check result, and whether the email was edited since the last server result
   // (typing clears the error, as in the design).
   const [clientInvalid, setClientInvalid] = useState(false);
@@ -69,16 +83,31 @@ export function WaitlistFormClient({ variant, source }: Props) {
     else if (state.status !== "idle") turnstile.current?.reset();
   }, [state]);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    // With JS, submits are dispatched here (so they can wait for the token); without
+    // it, the form still posts to the action natively.
+    event.preventDefault();
     const email = inputRef.current?.value ?? "";
     if (!emailSchema.safeParse(email).success) {
-      event.preventDefault();
       setClientInvalid(true);
       inputRef.current?.focus();
       return;
     }
     setClientInvalid(false);
     setEdited(false);
+
+    // Read the fields now: disabled inputs (while waiting) are left out of FormData.
+    const formData = new FormData(event.currentTarget);
+    if (!formData.get("cf-turnstile-response")) {
+      setWaiting(true);
+      const token = await turnstile.current?.waitForToken(TOKEN_WAIT_MS);
+      if (token) formData.set("cf-turnstile-response", token);
+    }
+    startTransition(() => {
+      // Inside the transition, so the form stays busy until the action's result lands.
+      setWaiting(false);
+      formAction(formData);
+    });
   }
 
   if (state.status === "success") {
