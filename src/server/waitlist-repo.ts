@@ -104,15 +104,15 @@ export async function confirmPending(args: {
   return rows.length > 0;
 }
 
-export async function findStatusByConfirmHash(
+export async function findByConfirmHash(
   confirmTokenHash: string,
-): Promise<WaitlistSignup["status"] | undefined> {
+): Promise<Pick<WaitlistSignup, "status" | "confirmSentAt"> | undefined> {
   const [row] = await getDb()
-    .select({ status: waitlistSignups.status })
+    .select({ status: waitlistSignups.status, confirmSentAt: waitlistSignups.confirmSentAt })
     .from(waitlistSignups)
     .where(eq(waitlistSignups.confirmTokenHash, confirmTokenHash))
     .limit(1);
-  return row?.status;
+  return row;
 }
 
 export async function findStatusByUnsubscribeToken(

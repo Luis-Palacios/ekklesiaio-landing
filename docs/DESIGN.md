@@ -178,7 +178,7 @@ waitlist_signups (
 ### 5.4 Double opt-in
 - Email (React Email, `server/email/confirm-email.tsx`), in the **signup's locale**, using the `email.*` keys. It's simple and on-brand: logo, heading, body, a navy button linking to `https://ekklesiaio.com/{locale}/confirm?token=…`, the ignore note, and an unsubscribe link. From: the `EMAIL_FROM` env var (e.g. `ekklesiaio <hello@ekklesiaio.com>`). Include a `List-Unsubscribe` header.
 - Tokens expire after **72 hours**.
-- `/[locale]/confirm`: valid token → mark `confirmed`, clear the hash, show `confirm.title` / `confirm.body`. Invalid or expired → `confirm.invalidTitle` / `confirm.invalidBody` with a link back to `/#waitlist`. Same visual shell as the landing page (header + a centered card on paper + footer).
+- `/[locale]/confirm`: opening the link changes nothing; a valid token shows a "Confirm my email" button whose POST marks it `confirmed` and shows `confirm.title` / `confirm.body` (an already-confirmed link shows that too). Invalid or expired → `confirm.invalidTitle` / `confirm.invalidBody` with a link back to `/#waitlist`. Same visual shell as the landing page (header + a centered card on paper + footer).
 - `/[locale]/unsubscribe?token=…` → set `unsubscribed` and show `unsubscribe.*`.
 - Pages that use tokens must be `noindex`.
 
