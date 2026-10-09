@@ -31,7 +31,7 @@ This folder already has files (docs, brand, messages, public/brand, icons), and 
 - [x] **Step 2: i18n** (branch `step-2-i18n`, PR #2)
 - [x] **Step 3: Static page** (branch `step-3-static-page`)
 - [x] **Step 4: Waitlist** (branch `step-4-waitlist`, PR #6). The migration is applied to the dev database; Vercel builds apply migrations from here on.
-- [x] **Step 5: Email** (branch `step-5-email`)
+- [x] **Step 5: Email** (branch `step-5-email`, PR #7)
 - [ ] **Step 6: Polish** ← next
 
 ## Decisions and gotchas so far
