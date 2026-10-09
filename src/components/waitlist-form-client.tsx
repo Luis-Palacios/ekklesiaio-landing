@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useLocale, useTranslations } from "next-intl";
 import {
   startTransition,
@@ -66,6 +67,9 @@ export function WaitlistFormClient({ variant, source }: Props) {
   // (typing clears the error, as in the design).
   const [clientInvalid, setClientInvalid] = useState(false);
   const [edited, setEdited] = useState(false);
+  // Turnstile loads on the form's first focus or press, not with the page.
+  const [turnstileLoad, setTurnstileLoad] = useState(false);
+  const startTurnstile = () => setTurnstileLoad(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const turnstile = useRef<TurnstileHandle>(null);
@@ -79,14 +83,18 @@ export function WaitlistFormClient({ variant, source }: Props) {
   const serverError = !pending && !invalid && state.status === "error" && !edited;
 
   useEffect(() => {
-    if (state.status === "success") successRef.current?.focus();
-    else if (state.status !== "idle") turnstile.current?.reset();
-  }, [state]);
+    if (state.status === "success") {
+      successRef.current?.focus();
+      // Counts accepted signups, not attempts.
+      track("waitlist_submit", { locale, source });
+    } else if (state.status !== "idle") turnstile.current?.reset();
+  }, [state, locale, source]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // With JS, submits are dispatched here (so they can wait for the token); without
     // it, the form still posts to the action natively.
     event.preventDefault();
+    startTurnstile();
     const email = inputRef.current?.value ?? "";
     if (!emailSchema.safeParse(email).success) {
       setClientInvalid(true);
@@ -139,7 +147,14 @@ export function WaitlistFormClient({ variant, source }: Props) {
       : t(isHero ? "heroButton" : "ctaButton");
 
   return (
-    <form action={formAction} onSubmit={handleSubmit} noValidate className="flex flex-col gap-2">
+    <form
+      action={formAction}
+      onSubmit={handleSubmit}
+      onFocus={startTurnstile}
+      onPointerDown={startTurnstile}
+      noValidate
+      className="flex flex-col gap-2"
+    >
       <label htmlFor={inputId} className={`text-sm font-semibold ${s.label}`}>
         {t(isHero ? "heroLabel" : "ctaLabel")}
       </label>
@@ -187,7 +202,7 @@ export function WaitlistFormClient({ variant, source }: Props) {
           autoComplete="off"
         />
       </div>
-      <TurnstileWidget ref={turnstile} theme={variant} language={locale} />
+      <TurnstileWidget ref={turnstile} load={turnstileLoad} theme={variant} language={locale} />
 
       <div
         id={messageId}

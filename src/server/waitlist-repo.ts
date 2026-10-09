@@ -138,3 +138,25 @@ export async function unsubscribeByToken(unsubscribeToken: string, now: Date): P
     .returning({ id: waitlistSignups.id });
   return rows.length > 0;
 }
+
+/**
+ * Deletes pending signups created before `createdBefore` whose last confirmation email
+ * (if any) went out before `sentBefore`. Returns how many rows were deleted.
+ */
+export async function deleteStalePending(args: {
+  createdBefore: Date;
+  sentBefore: Date;
+}): Promise<number> {
+  const t = waitlistSignups;
+  const rows = await getDb()
+    .delete(t)
+    .where(
+      and(
+        eq(t.status, "pending"),
+        lt(t.createdAt, args.createdBefore),
+        or(isNull(t.confirmSentAt), lt(t.confirmSentAt, args.sentBefore)),
+      ),
+    )
+    .returning({ id: t.id });
+  return rows.length;
+}

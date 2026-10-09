@@ -71,6 +71,7 @@ src/
     db/schema.ts  db/client.ts
     email/confirm-email.tsx # React Email template
     turnstile.ts  ratelimit.ts  tokens.ts
+    retention.ts            # 30-day purge of unconfirmed sign-ups (§5.6)
 brand/theme.css
 messages/en.json  messages/es.json
 docs/DESIGN.md  docs/design/*
@@ -192,6 +193,14 @@ waitlist_signups (
   2. *Deploy* the code that uses the new shape (and, if needed, backfills).
   3. *Contract:* in a later deploy, once no running code depends on it, drop or rename the old columns.
 
+### 5.6 Retention: unconfirmed sign-ups
+The privacy policy (`docs/privacy-policy.md`) promises that sign-ups never confirmed are deleted after 30 days. A daily Vercel Cron enforces it.
+- **Schedule:** `vercel.json` `crons` calls `GET /api/cron/purge-pending` daily at `0 6 * * *` (UTC). On Hobby, Vercel may run it any time within that hour. Crons run on the production deployment only.
+- **Auth:** Vercel sends `Authorization: Bearer $CRON_SECRET`. The route compares it in constant time and answers 401 otherwise. If `CRON_SECRET` isn't set, every call is refused, so the route never runs unauthenticated. Set `CRON_SECRET` (a random string, 16+ characters) in the Vercel project's **Production** environment.
+- **Rule** (`server/retention.ts` → `deleteStalePending` in `server/waitlist-repo.ts`): delete rows with `status = 'pending'` and `created_at` older than 30 days, **unless their confirm link is still valid** (`confirm_sent_at` within the 72-hour TTL, §5.4). A re-signup keeps the row's original `created_at` but sends a fresh link; without this guard, the cron could delete a row minutes after its new email went out. Such a row is deleted on the first run after its link expires. Confirmed and unsubscribed rows are never touched.
+- **Result:** the route logs `[cron] purge-pending: deleted N unconfirmed signup(s)` and returns `{ "deleted": N }`. Errors log and return 500. Vercel doesn't retry, so a failed run is caught up by the next day's (the delete is idempotent; duplicate deliveries are harmless).
+- **Run it by hand:** `curl -H "Authorization: Bearer $CRON_SECRET" https://ekklesiaio.com/api/cron/purge-pending`, or locally against the dev database with `CRON_SECRET` in `.env.local` (it really deletes rows).
+
 ## 6. Internationalization
 
 ### 6.1 Routing
@@ -232,7 +241,8 @@ Load the fonts as ArrayBuffers for `ImageResponse`. Set `alt` from `meta.ogAlt`.
 - Decorative SVGs get `aria-hidden="true"`. Each illustration card gets `role="img"` plus a translated `aria-label`.
 
 ## 9. Open items for Luis (don't invent these)
-- [ ] **Privacy policy text.** Build `/[locale]/privacy` with a clearly marked DRAFT notice (`privacy.draftNotice`) and a short list of facts only: what is collected (email, language, signup source), why (launch updates), the provider list (Vercel, Neon, Resend, Cloudflare), how to unsubscribe, the contact email, and that reports and data are never used to train AI models. It must also **reference Cloudflare's [Turnstile Privacy Addendum](https://www.cloudflare.com/turnstile-privacy-policy/)**, a condition of running Turnstile in Invisible mode (the addendum is English-only, so the Spanish page notes that). Luis reviews and finalizes it.
+- [x] **Privacy policy text.** Done: approved text in `docs/privacy-policy.md` (2026-10-08).
+  Original brief: Build `/[locale]/privacy` with a clearly marked DRAFT notice (`privacy.draftNotice`) and a short list of facts only: what is collected (email, language, signup source), why (launch updates), the provider list (Vercel, Neon, Resend, Cloudflare), how to unsubscribe, the contact email, and that reports and data are never used to train AI models. It must also **reference Cloudflare's [Turnstile Privacy Addendum](https://www.cloudflare.com/turnstile-privacy-policy/)**, a condition of running Turnstile in Invisible mode (the addendum is English-only, so the Spanish page notes that). Luis reviews and finalizes it.
 - [ ] `CONTACT_EMAIL` and `EMAIL_FROM` addresses.
 - [ ] An outlined wordmark SVG (§3.4).
 - [ ] Replace the illustration cards with real screenshots once the staff app is restyled (optional).
@@ -250,6 +260,7 @@ NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
 KV_REST_API_URL=                   # Upstash Redis (Vercel Marketplace sets it)
 KV_REST_API_TOKEN=
+CRON_SECRET=                       # random, 16+ chars; Vercel sends it to the cron route (§5.6)
 ```
 Commit a `.env.example`. Never commit real values.
 

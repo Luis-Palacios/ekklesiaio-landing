@@ -209,10 +209,160 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "draftNotice": "[DRAFT — Luis to review before launch]",
-    "reviewMarker": "[Luis to review]",
-    "turnstileHeading": "Spam protection",
-    "turnstileBody": "To protect the waitlist form from spam and abuse, this site uses Cloudflare Turnstile. Information collected by Turnstile is handled as described in the <link>Cloudflare Turnstile Privacy Addendum</link>."
+    "effectiveDate": "<b>Effective date:</b> October 9, 2026",
+    "who": {
+      "heading": "Who we are",
+      "body": [
+        "ekklesiaio is operated by Luis Palacios, based in Managua, Nicaragua (“we”, “us”). This policy explains what information we collect on <b>ekklesiaio.com</b> while ekklesiaio is in pre-launch, and what we do with it.",
+        "Right now the site does one thing with personal information: it keeps a waitlist of people who want to hear when ekklesiaio launches. The ekklesiaio product itself will have its own privacy policy when it opens."
+      ]
+    },
+    "collect": {
+      "heading": "Information we collect",
+      "intro": "We collect only what the waitlist needs. We don’t ask for your name, your church, or anything else.",
+      "columns": ["What", "When", "Why"],
+      "rows": [
+        [
+          "Your email address",
+          "You join the waitlist",
+          "To confirm your sign-up and tell you when we launch"
+        ],
+        [
+          "Your language (English or Spanish)",
+          "You join the waitlist",
+          "To write to you in your language"
+        ],
+        [
+          "Which form you used (top or bottom of the page)",
+          "You join the waitlist",
+          "To understand which part of the page works"
+        ],
+        [
+          "Sign-up, confirmation and unsubscribe dates",
+          "As they happen",
+          "To run double opt-in and honor unsubscribes"
+        ],
+        [
+          "Which links you click in our emails",
+          "You click a link in an email",
+          "To learn which updates are useful. We don’t track whether you open our emails."
+        ],
+        [
+          "Your IP address",
+          "Each sign-up attempt",
+          "To limit repeated attempts and block abuse. It’s held for about 10 minutes, not stored with your sign-up."
+        ],
+        [
+          "Device and browser signals",
+          "Each sign-up attempt",
+          "Cloudflare Turnstile uses them to tell people from bots (see Service providers)"
+        ],
+        [
+          "Anonymous page-view statistics",
+          "You visit the site",
+          "To see how many people visit, without identifying you (see Cookies)"
+        ]
+      ]
+    },
+    "use": {
+      "heading": "How we use it",
+      "intro": "We use your email only to send you a confirmation email and, once you confirm, updates about ekklesiaio’s launch. We send these because you asked for them, and you can stop them at any time.",
+      "items": [
+        "<b>We never sell or rent your information</b>, and we don’t share it with advertisers.",
+        "<b>We don’t use your information to train AI models.</b>",
+        "<b>We don’t track whether you open our emails.</b> We do count which links in our emails get clicked, to learn what’s useful.",
+        "We use IP addresses and device signals only to keep the form safe from bots and abuse.",
+        "Anonymous visit statistics help us improve the site. They don’t identify you."
+      ]
+    },
+    "providers": {
+      "heading": "Service providers",
+      "intro": "We use a few trusted companies to run the site. They process information only to provide their service to us.",
+      "columns": ["Provider", "What it does for us", "Their privacy policy"],
+      "rows": [
+        [
+          "Vercel",
+          "Hosts the website; anonymous visit statistics",
+          "<vercel>Vercel Privacy Notice</vercel>"
+        ],
+        [
+          "Neon (a Databricks company)",
+          "Stores the waitlist database",
+          "<databricks>Databricks Privacy Notice</databricks>"
+        ],
+        [
+          "Upstash",
+          "Briefly holds IP addresses to limit repeated sign-up attempts",
+          "<upstash>Upstash Privacy Policy</upstash>"
+        ],
+        [
+          "Resend",
+          "Sends our emails and counts link clicks in them",
+          "<resend>Resend Privacy Policy</resend>"
+        ],
+        [
+          "Cloudflare Turnstile",
+          "Checks that sign-ups come from people, not bots",
+          "<turnstile>Turnstile Privacy Addendum</turnstile>"
+        ]
+      ],
+      "turnstile": "<b>About Cloudflare Turnstile.</b> Our sign-up form uses Turnstile in invisible mode. Turnstile collects signals such as your IP address, browser user-agent and connection details to tell people from bots. Cloudflare’s use of this information is described in its <turnstile>Turnstile Privacy Addendum</turnstile>."
+    },
+    "storage": {
+      "heading": "Where your information is stored",
+      "body": "Our waitlist and our service providers’ systems are located in the <b>United States</b> (N. Virginia). If you live elsewhere, your information is transferred to and processed in the United States. Our providers protect it with encryption in transit and at rest."
+    },
+    "retention": {
+      "heading": "How long we keep it",
+      "columns": ["Information", "How long"],
+      "rows": [
+        [
+          "Confirmed sign-ups",
+          "Until ekklesiaio launches and we’ve told you, or until you unsubscribe or ask us to delete it"
+        ],
+        ["Sign-ups never confirmed", "Deleted after 30 days"],
+        [
+          "After you unsubscribe",
+          "We keep only what’s needed to make sure we never email you again (your email, language and the relevant dates). Ask us and we’ll delete those too."
+        ],
+        ["IP addresses for rate limiting", "About 10 minutes"]
+      ]
+    },
+    "rights": {
+      "heading": "Your choices and rights",
+      "intro": "You’re in control of your information.",
+      "items": [
+        "<b>Unsubscribe</b> with the link in any email we send. It takes effect right away.",
+        "<b>See, correct or delete</b> your information by emailing <email>hello@ekklesiaio.com</email>. We’ll reply within 30 days.",
+        "<b>Withdraw your consent</b> at any time. This doesn’t affect emails we already sent."
+      ],
+      "outro": "Depending on where you live, you may have more rights under local law, such as the GDPR in Europe. You can also complain to your local data protection authority. We’ll honor any of these requests wherever you live."
+    },
+    "cookies": {
+      "heading": "Cookies",
+      "intro": "We use one cookie, and no advertising or tracking cookies.",
+      "columns": ["Cookie", "What it does", "How long"],
+      "rows": [
+        [
+          "<code>NEXT_LOCALE</code>",
+          "Remembers the language you picked (English or Spanish)",
+          "1 year"
+        ]
+      ],
+      "outro": "Our visit statistics (Vercel Analytics) don’t use cookies and don’t identify you. Cloudflare Turnstile runs in a separate frame on the sign-up form; see its <turnstile>privacy addendum</turnstile>."
+    },
+    "children": {
+      "heading": "Children",
+      "body": "ekklesiaio is built for church staff and leaders. The waitlist is not meant for anyone under 16, and we don’t knowingly collect their information. If you think a child has signed up, contact us and we’ll delete it."
+    },
+    "changes": {
+      "heading": "Changes to this policy",
+      "body": "If we change this policy, we’ll update the effective date above. If a change affects how we use your email, we’ll tell you by email before it takes effect."
+    },
+    "contact": {
+      "heading": "Contact",
+      "body": "Questions or requests about your privacy: <b><email>hello@ekklesiaio.com</email></b>."
+    }
   },
   "switcher": {
     "switchTo": "Ver en español"

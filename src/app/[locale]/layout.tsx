@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -20,6 +21,14 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     metadataBase: getSiteUrl(),
     title: t("title"),
     description: t("description"),
+    // Images come from opengraph-image.tsx (Next also emits them as twitter:image).
+    openGraph: {
+      type: "website",
+      siteName: "ekklesiaio",
+      title: t("title"),
+      description: t("description"),
+    },
+    twitter: { card: "summary_large_image" },
   };
 }
 
@@ -32,6 +41,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       <body>
         {/* Client components get only the messages they need, passed per subtree. */}
         <NextIntlClientProvider messages={null}>{children}</NextIntlClientProvider>
+        {/* Cookieless page views; off in development. */}
+        <Analytics />
       </body>
     </html>
   );
