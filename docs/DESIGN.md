@@ -10,7 +10,7 @@ This spec was written alongside the approved design. When this file and the desi
 | `docs/design/landing-page.dc.html` | The approved page: exact markup structure, inline styles (px values, colors, clamp() sizes), section order, and the full EN/ES copy. Open it in a browser to see it (it needs its runtime, so it may not render fully standalone; read it as source). |
 | `docs/design/waitlist-states.dc.html` | The six form states. |
 | `docs/design/social-card.dc.html` | The 1200×630 share card. Rebuild it with `next/og`. |
-| `brand/theme.css` | Tailwind v4 `@theme` tokens. **Use these tokens; don't hard-code hex values in components.** |
+| `brand/theme.css` | Tailwind v4 `@theme` tokens, **generated from `staff-app/tokens/brand.json`** (change tokens there and run `pnpm tokens` in staff-app). **Use these tokens; don't hard-code hex values in components.** |
 | `messages/en.json`, `messages/es.json` | All copy. Keys mirror the design. **No user-facing string in components.** |
 | `public/brand/*` | Logo files (see §3.4). |
 
@@ -81,7 +81,7 @@ public/brand/*
 ## 3. Visual system
 
 ### 3.1 Tokens
-Everything is in `brand/theme.css`. Key rules:
+Everything is in `brand/theme.css`, generated from the shared tokens in `staff-app/tokens/` (don't edit it here). Key rules:
 
 - **Gold never carries text on light backgrounds.** Use `gold-500` for fills, dots and underlines, and for buttons with **navy text** (8.6:1). For gold-looking text on light backgrounds, use `gold-800` (eyebrows) or `gold-900` (on gold tints).
 - Body text is `ink`, secondary text is `muted`. `subtle` is decorative only.

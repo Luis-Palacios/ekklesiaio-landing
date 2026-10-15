@@ -34,7 +34,7 @@ It's a small site, but it's built like a production app. That means a double opt
 - **Privacy by design.** No cookies, so no consent banner. A daily Vercel Cron deletes unconfirmed sign-ups after 30 days. The published privacy policy is rendered word for word from approved copy.
 - **Performance and accessibility.** Lighthouse scores 100 for accessibility and SEO and 99–100 for desktop performance. Turnstile loads only when someone first interacts with the form (that alone was worth ~15 mobile Lighthouse points). Fonts are self-hosted subsets, and `/en` and `/es` are fully prerendered.
 - **Dynamic share images.** Per-locale Open Graph cards generated at the edge with `next/og` (Satori).
-- **Design system.** Tailwind v4 `@theme` tokens in [`brand/theme.css`](brand/theme.css), with no UI kit and no icon library. Every color, radius and type style comes from a token.
+- **Design system.** Tailwind v4 `@theme` tokens in [`brand/theme.css`](brand/theme.css), with no UI kit and no icon library. Every color, radius and type style comes from a token. The file is generated from the shared ekklesiaio design tokens (W3C DTCG JSON) kept in the staff app repo, so both apps use one brand source.
 
 ## Tech stack
 
@@ -101,7 +101,7 @@ src/
 │   └── email/                  # React Email template + sender
 └── proxy.ts                    # locale negotiation (Next 16's middleware)
 messages/                       # en.json / es.json: all user-facing copy
-brand/theme.css                 # Tailwind v4 design tokens
+brand/theme.css                 # Tailwind v4 design tokens (generated from staff-app/tokens)
 drizzle/                        # SQL migrations
 docs/                           # build spec, approved design references, privacy policy
 ```
